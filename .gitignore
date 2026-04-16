@@ -1,0 +1,19 @@
+.env
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+logs/
+data/raw/
+
+# Development-local (not committed)
+.python-version
+CLAUDE.md
+.claude/
+issues/
+tests/
+specs/
