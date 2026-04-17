@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-17T01:56:19Z",
+  "updated_at": "2026-04-17T03:16:01Z",
   "models": {
     "claude-opus": {
       "last_version": "4.7",
@@ -32,14 +32,14 @@
       "days_until": 36
     },
     "qwen-lm": {
-      "last_version": "Qwen3.6-Plus",
-      "last_date": "2026-04-02",
-      "predicted_date": "2026-04-30",
-      "predicted_version": "Qwen3.7-Plus?",
-      "confidence_range_days": 130,
-      "mean_interval_days": 51,
-      "median_interval_days": 28,
-      "days_until": 13
+      "last_version": "35B-A3B",
+      "last_date": "2026-04-15",
+      "predicted_date": "2026-04-22",
+      "predicted_version": "36B-A3B?",
+      "confidence_range_days": 30,
+      "mean_interval_days": 12,
+      "median_interval_days": 7,
+      "days_until": 5
     },
     "nano-banana": {
       "last_version": "2",
@@ -74,12 +74,12 @@
     "qwen-image": {
       "last_version": "Qwen-Image-2.0",
       "last_date": "2026-02-10",
-      "predicted_date": "2026-03-31",
+      "predicted_date": "2026-02-28",
       "predicted_version": "Qwen-Image-2.1?",
-      "confidence_range_days": 55,
-      "mean_interval_days": 48,
-      "median_interval_days": 49,
-      "days_until": -17
+      "confidence_range_days": 35,
+      "mean_interval_days": 19,
+      "median_interval_days": 18,
+      "days_until": -48
     },
     "seedance": {
       "last_version": "2.0",
@@ -114,22 +114,22 @@
     "ltx-video": {
       "last_version": "LTX-2.3",
       "last_date": "2026-03-05",
-      "predicted_date": "2026-05-28",
+      "predicted_date": "2026-05-10",
       "predicted_version": "LTX-2.4?",
-      "confidence_range_days": 60,
-      "mean_interval_days": 91,
-      "median_interval_days": 84,
-      "days_until": 41
+      "confidence_range_days": 73,
+      "mean_interval_days": 54,
+      "median_interval_days": 66,
+      "days_until": 23
     },
     "wan": {
       "last_version": "2.7",
       "last_date": "2026-03-31",
-      "predicted_date": "2026-06-16",
+      "predicted_date": "2026-04-30",
       "predicted_version": "2.8?",
-      "confidence_range_days": 118,
-      "mean_interval_days": 100,
-      "median_interval_days": 77,
-      "days_until": 60
+      "confidence_range_days": 173,
+      "mean_interval_days": 62,
+      "median_interval_days": 30,
+      "days_until": 13
     }
   }
 }

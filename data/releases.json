@@ -147,11 +147,75 @@
       "note": "Qwen3.5 and Qwen3.5-Plus release (397B-A17B MoE flagship)"
     },
     {
+      "version": "397B-A17B",
+      "date": "2026-02-16",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+      "source": "hf:Qwen/Qwen3.5-397B-A17B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen3.5-397B-A17B"
+    },
+    {
+      "version": "122B-A10B",
+      "date": "2026-02-24",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B",
+      "source": "hf:Qwen/Qwen3.5-122B-A10B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen3.5-122B-A10B"
+    },
+    {
+      "version": "27B",
+      "date": "2026-02-24",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-27B",
+      "source": "hf:Qwen/Qwen3.5-27B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen3.5-27B"
+    },
+    {
+      "version": "4B",
+      "date": "2026-02-27",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-4B",
+      "source": "hf:Qwen/Qwen3.5-4B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen3.5-4B"
+    },
+    {
+      "version": "9B",
+      "date": "2026-02-27",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-9B",
+      "source": "hf:Qwen/Qwen3.5-9B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen3.5-9B"
+    },
+    {
+      "version": "0.8B",
+      "date": "2026-02-28",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-0.8B",
+      "source": "hf:Qwen/Qwen3.5-0.8B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen3.5-0.8B"
+    },
+    {
+      "version": "2B",
+      "date": "2026-02-28",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-2B",
+      "source": "hf:Qwen/Qwen3.5-2B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen3.5-2B"
+    },
+    {
       "version": "Qwen3.6-Plus",
       "date": "2026-04-02",
       "source": "alibaba",
       "url": "https://www.caixinglobal.com/2026-04-02/alibaba-releases-qwen-36-plus-ai-model-with-enhanced-coding-capabilities-102430395.html",
       "note": "Qwen3.6-Plus agentic flagship"
+    },
+    {
+      "version": "35B-A3B",
+      "date": "2026-04-15",
+      "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+      "source": "hf:Qwen/Qwen3.6-35B-A3B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen3.6-35B-A3B"
     }
   ],
   "nano-banana": [
@@ -274,6 +338,30 @@
       "source": "alibaba",
       "url": "https://news.aibase.com/news/23997",
       "note": "Qwen-Image-Edit-2511"
+    },
+    {
+      "version": "Qwen-Image-Layered",
+      "date": "2025-12-17",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-Layered",
+      "source": "hf:Qwen/Qwen-Image-Layered",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen-Image-Layered"
+    },
+    {
+      "version": "2511",
+      "date": "2025-12-17",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-Edit-2511",
+      "source": "hf:Qwen/Qwen-Image-Edit-2511",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen-Image-Edit-2511"
+    },
+    {
+      "version": "2512",
+      "date": "2025-12-30",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2512",
+      "source": "hf:Qwen/Qwen-Image-2512",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Qwen/Qwen-Image-2512"
     },
     {
       "version": "Qwen-Image-2.0",
@@ -420,6 +508,14 @@
   ],
   "ltx-video": [
     {
+      "version": "LTX-Video",
+      "date": "2024-10-31",
+      "url": "https://huggingface.co/Lightricks/LTX-Video",
+      "source": "hf:Lightricks/LTX-Video",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-Video"
+    },
+    {
       "version": "0.9",
       "date": "2024-11-22",
       "source": "github",
@@ -441,11 +537,67 @@
       "note": "LTX-Video 0.9.5"
     },
     {
+      "version": "2B-0.9.6-Distilled-04-25",
+      "date": "2025-04-18",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-2B-0.9.6-Distilled-04-25",
+      "source": "hf:Lightricks/LTX-Video-2B-0.9.6-Distilled-04-25",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-Video-2B-0.9.6-Distilled-04-25"
+    },
+    {
+      "version": "2B-0.9.6-Dev-04-25",
+      "date": "2025-04-18",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-2B-0.9.6-Dev-04-25",
+      "source": "hf:Lightricks/LTX-Video-2B-0.9.6-Dev-04-25",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-Video-2B-0.9.6-Dev-04-25"
+    },
+    {
       "version": "13B (0.9.7)",
       "date": "2025-05-06",
       "source": "github",
       "url": "https://www.prnewswire.com/news-releases/lightricks-launches-13b-parameters-ltx-video-model-302447660.html",
       "note": "LTXV 13B launch"
+    },
+    {
+      "version": "0.9.7-dev",
+      "date": "2025-05-13",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-0.9.7-dev",
+      "source": "hf:Lightricks/LTX-Video-0.9.7-dev",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-Video-0.9.7-dev"
+    },
+    {
+      "version": "0.9.7-distilled",
+      "date": "2025-05-14",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-0.9.7-distilled",
+      "source": "hf:Lightricks/LTX-Video-0.9.7-distilled",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-Video-0.9.7-distilled"
+    },
+    {
+      "version": "13b-0.9.7",
+      "date": "2025-07-01",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-ICLoRA-canny-13b-0.9.7",
+      "source": "hf:Lightricks/LTX-Video-ICLoRA-canny-13b-0.9.7",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-Video-ICLoRA-canny-13b-0.9.7"
+    },
+    {
+      "version": "13b-0.9.8",
+      "date": "2025-07-16",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-ICLoRA-detailer-13b-0.9.8",
+      "source": "hf:Lightricks/LTX-Video-ICLoRA-detailer-13b-0.9.8",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-Video-ICLoRA-detailer-13b-0.9.8"
+    },
+    {
+      "version": "0.9.8-13B-distilled",
+      "date": "2025-07-17",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-0.9.8-13B-distilled",
+      "source": "hf:Lightricks/LTX-Video-0.9.8-13B-distilled",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-Video-0.9.8-13B-distilled"
     },
     {
       "version": "0.9.8",
@@ -460,6 +612,22 @@
       "source": "github",
       "url": "https://en.wikipedia.org/wiki/LTX-2",
       "note": "LTX-2 next generation"
+    },
+    {
+      "version": "2",
+      "date": "2026-01-03",
+      "url": "https://huggingface.co/Lightricks/LTX-2",
+      "source": "hf:Lightricks/LTX-2",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-2"
+    },
+    {
+      "version": "2.3",
+      "date": "2026-03-04",
+      "url": "https://huggingface.co/Lightricks/LTX-2.3",
+      "source": "hf:Lightricks/LTX-2.3",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Lightricks/LTX-2.3"
     },
     {
       "version": "LTX-2.3",
@@ -478,11 +646,67 @@
       "note": "Wan 2.1 open-source release"
     },
     {
+      "version": "1.3B",
+      "date": "2025-02-25",
+      "url": "https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B",
+      "source": "hf:Wan-AI/Wan2.1-T2V-1.3B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Wan-AI/Wan2.1-T2V-1.3B"
+    },
+    {
+      "version": "14B-720P",
+      "date": "2025-02-25",
+      "url": "https://huggingface.co/Wan-AI/Wan2.1-I2V-14B-720P",
+      "source": "hf:Wan-AI/Wan2.1-I2V-14B-720P",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Wan-AI/Wan2.1-I2V-14B-720P"
+    },
+    {
+      "version": "14B-480P",
+      "date": "2025-02-25",
+      "url": "https://huggingface.co/Wan-AI/Wan2.1-I2V-14B-480P",
+      "source": "hf:Wan-AI/Wan2.1-I2V-14B-480P",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Wan-AI/Wan2.1-I2V-14B-480P"
+    },
+    {
+      "version": "14B",
+      "date": "2025-02-25",
+      "url": "https://huggingface.co/Wan-AI/Wan2.1-T2V-14B",
+      "source": "hf:Wan-AI/Wan2.1-T2V-14B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Wan-AI/Wan2.1-T2V-14B"
+    },
+    {
       "version": "2.1-VACE",
       "date": "2025-05-14",
       "source": "alibaba",
       "url": "https://github.com/Wan-Video/Wan2.1",
       "note": "Wan 2.1-VACE editing extension"
+    },
+    {
+      "version": "5B",
+      "date": "2025-07-18",
+      "url": "https://huggingface.co/Wan-AI/Wan2.2-TI2V-5B",
+      "source": "hf:Wan-AI/Wan2.2-TI2V-5B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Wan-AI/Wan2.2-TI2V-5B"
+    },
+    {
+      "version": "Wan2.2-T2V-A14B",
+      "date": "2025-07-24",
+      "url": "https://huggingface.co/Wan-AI/Wan2.2-T2V-A14B",
+      "source": "hf:Wan-AI/Wan2.2-T2V-A14B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Wan-AI/Wan2.2-T2V-A14B"
+    },
+    {
+      "version": "Wan2.2-I2V-A14B",
+      "date": "2025-07-24",
+      "url": "https://huggingface.co/Wan-AI/Wan2.2-I2V-A14B",
+      "source": "hf:Wan-AI/Wan2.2-I2V-A14B",
+      "detected_at": "2026-04-17T03:16:00Z",
+      "note": "Wan-AI/Wan2.2-I2V-A14B"
     },
     {
       "version": "2.2",
