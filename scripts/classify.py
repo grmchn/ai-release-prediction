@@ -10,6 +10,7 @@ import json
 import os
 import re
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
@@ -27,7 +28,17 @@ except Exception:  # noqa: BLE001 — dotenv is optional at runtime
 from scripts import common  # noqa: E402
 
 
-BATCH_SIZE = 10
+# Larger batches = fewer LLM calls = less RPM pressure on the free tier.
+BATCH_SIZE = 20
+# Sleep between batches to stay under Gemini free-tier RPM limits. The free
+# tier historically caps Gemma at a few RPM; 4s pacing keeps us well under.
+BATCH_SLEEP_SEC = 4.0
+# Per-request cap on generation — shorter responses return faster and reduce
+# the chance of getting cut off mid-JSON.
+MAX_TOKENS = 800
+# Longest summary we feed the LLM per entry. Title carries most of the
+# classification signal; summary is a backup.
+SUMMARY_TRUNCATE = 300
 
 # Primary → fallback chain per AGENTS.md §7.
 # litellm model name format: <provider>/<model>. Gemini / Gemma flow through
@@ -38,6 +49,21 @@ LLM_FALLBACKS: list[str] = [
     "gemini/gemma-3-27b-it",
     "groq/llama-3.3-70b-versatile",
 ]
+
+
+def _active_fallbacks() -> list[str]:
+    """Drop fallback entries whose API key is not configured.
+
+    Saves a pointless round-trip + error when e.g. GROQ_API_KEY is absent.
+    """
+    active: list[str] = []
+    for model in LLM_FALLBACKS:
+        if model.startswith("gemini/") and not os.environ.get("GEMINI_API_KEY"):
+            continue
+        if model.startswith("groq/") and not os.environ.get("GROQ_API_KEY"):
+            continue
+        active.append(model)
+    return active
 
 
 PROMPT_TEMPLATE = """You are a release-note classifier for an AI-model tracker.
@@ -115,7 +141,7 @@ def _build_prompt(batch: list[dict[str, Any]]) -> str:
             {
                 "entry_index": i,
                 "title": entry.get("title", ""),
-                "summary": (entry.get("summary") or "")[:800],
+                "summary": (entry.get("summary") or "")[:SUMMARY_TRUNCATE],
                 "link": entry.get("link", ""),
                 "published": entry.get("published", ""),
                 "hint_model_id": entry.get("model_id", ""),
@@ -132,7 +158,8 @@ def _call_litellm(model: str, prompt: str) -> str:
         model=model,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.0,
-        max_tokens=1500,
+        max_tokens=MAX_TOKENS,
+        timeout=60,
     )
     # litellm returns an OpenAI-style object.
     return response.choices[0].message.content or ""
@@ -144,7 +171,9 @@ def classify_batch(
     fallbacks: list[str] | None = None,
 ) -> list[dict[str, Any]]:
     """Classify a batch, trying each model in the fallback chain until success."""
-    models = fallbacks or LLM_FALLBACKS
+    models = fallbacks if fallbacks is not None else _active_fallbacks()
+    if not models:
+        raise RuntimeError("classify: no LLM keys configured (GEMINI_API_KEY / GROQ_API_KEY)")
     prompt = _build_prompt(batch)
     last_err: Exception | None = None
 
@@ -166,8 +195,8 @@ def classify_batch(
             last_err = err
             continue
 
-    # All fallbacks failed — return a conservative "unknown" result per entry
-    # so the pipeline can still move forward without the LLM.
+    # All fallbacks failed — raise so the caller can skip the batch rather
+    # than silently producing empty classifications.
     raise RuntimeError(f"classify: all models failed: {last_err}")
 
 
@@ -175,11 +204,23 @@ def classify_entries(
     entries: list[dict[str, Any]],
     *,
     batch_size: int = BATCH_SIZE,
+    batch_sleep_sec: float = BATCH_SLEEP_SEC,
 ) -> list[dict[str, Any]]:
     """Run the classifier over `entries` and merge results back into each entry."""
     out: list[dict[str, Any]] = []
-    for start in range(0, len(entries), batch_size):
+    total_batches = (len(entries) + batch_size - 1) // batch_size
+    for idx, start in enumerate(range(0, len(entries), batch_size)):
         batch = entries[start : start + batch_size]
+        if idx > 0 and batch_sleep_sec > 0:
+            # Space out LLM calls to stay under free-tier RPM caps.
+            time.sleep(batch_sleep_sec)
+
+        print(
+            f"[classify] batch {idx + 1}/{total_batches} ({len(batch)} entries)",
+            file=sys.stderr,
+            flush=True,
+        )
+
         try:
             judgments = classify_batch(batch)
         except Exception as err:  # noqa: BLE001 — skip the batch, continue pipeline
