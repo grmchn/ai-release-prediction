@@ -1,0 +1,216 @@
+# AIリリース予想 — 対象モデル定義
+# AGENTS.md §6 / §7 / §10 参照
+#
+# 各モデルは RSS / GitHub Releases / Hugging Face のいずれかで追跡する。
+# fetch_rss.py / fetch_github.py / fetch_hf.py は共通スキーマへ正規化する。
+# `match` は RSS タイトルに対する正規表現フィルタ（大文字小文字区別なし）。
+
+models:
+  # ==========================
+  # LLM
+  # ==========================
+  - id: claude-opus
+    name: Claude Opus
+    vendor: Anthropic
+    category: llm
+    sources:
+      - type: rss
+        url: https://raw.githubusercontent.com/taobojlen/anthropic-rss-feed/main/anthropic_news_rss.xml
+        match: "claude.*opus|introducing claude"
+      - type: rss
+        url: https://www.reddit.com/r/ClaudeAI/.rss
+        match: "claude.*opus|introducing|released"
+      - type: rss
+        url: https://simonwillison.net/atom/everything/
+        match: "claude.*opus"
+
+  - id: gpt
+    name: GPT
+    vendor: OpenAI
+    category: llm
+    sources:
+      - type: rss
+        url: https://openai.com/news/rss.xml
+        match: "gpt-[0-9]|introducing gpt|chatgpt.*gpt-[0-9]"
+
+  - id: gemini-pro
+    name: Gemini Pro
+    vendor: Google
+    category: llm
+    sources:
+      - type: rss
+        url: https://blog.google/technology/google-deepmind/rss/
+        match: "gemini.*pro|introducing gemini"
+      - type: rss
+        url: https://deepmind.google/blog/rss.xml
+        match: "gemini.*pro"
+
+  - id: qwen-lm
+    name: Qwen
+    vendor: Alibaba
+    category: llm
+    sources:
+      # List all Qwen org models, pick base LLM families (Qwen2/3/4/…).
+      # `name_match` catches `Qwen3-32B`, `Qwen3.5-27B`, `Qwen3.6-35B-A3B`, etc.
+      # `exclude` drops image/VL/omni/coder/audio/embedding variants and
+      # precision/distillation spins so the core family dedups cleanly.
+      - type: hf_author
+        author: Qwen
+        name_match: "^Qwen\\d+(\\.\\d+)*-\\d+(\\.\\d+)?B(-A\\d+B)?$"
+        exclude: "(?i)(image|vl|omni|coder|audio|embedding|reward|math|-base|-instruct|-gptq|-awq|-fp8|-fp16|-bf16|-int[48]|-gguf|-mlx|-lora)"
+      - type: github
+        repo: QwenLM/Qwen3
+      - type: rss
+        url: https://www.reddit.com/r/LocalLLaMA/.rss
+        match: "qwen\\s*\\d"
+
+  # ==========================
+  # 画像生成
+  # ==========================
+  - id: nano-banana
+    name: Nano Banana
+    vendor: Google
+    category: image
+    sources:
+      - type: rss
+        url: https://blog.google/technology/google-deepmind/rss/
+        match: "nano banana|gemini.*flash.*image"
+      - type: rss
+        url: https://deepmind.google/blog/rss.xml
+        match: "nano banana|flash.*image"
+      - type: fal
+        match: "nano.?banana"
+        exclude: "(?i)(/edit\\b|/draw\\b)"
+      - type: rss
+        url: https://www.reddit.com/r/StableDiffusion/.rss
+        match: "nano.?banana"
+
+  - id: gpt-image
+    name: GPT-Image
+    vendor: OpenAI
+    category: image
+    sources:
+      - type: rss
+        url: https://openai.com/news/rss.xml
+        match: "gpt[- ]image|image generation|dall.?e"
+
+  - id: seedream
+    name: Seedream
+    vendor: ByteDance
+    category: image
+    sources:
+      - type: fal
+        match: "seedream"
+      - type: rss
+        url: https://www.reddit.com/r/StableDiffusion/.rss
+        match: "seedream"
+      - type: rss
+        url: https://simonwillison.net/atom/everything/
+        match: "seedream"
+      - type: rss
+        url: https://huggingface.co/blog/feed.xml
+        match: "seedream"
+
+  - id: qwen-image
+    name: Qwen-Image
+    vendor: Alibaba
+    category: image
+    sources:
+      # Pick up Qwen-Image, Qwen-Image-2.0, Qwen-Image-Edit-*, etc.
+      - type: hf_author
+        author: Qwen
+        name_match: "^Qwen-?Image"
+        exclude: "(?i)(-gptq|-awq|-fp8|-fp16|-bf16|-int[48]|-gguf|-mlx|-lora|-distill)"
+      - type: github
+        repo: QwenLM/Qwen-Image
+      - type: rss
+        url: https://huggingface.co/blog/feed.xml
+        match: "qwen.?image"
+      - type: rss
+        url: https://www.reddit.com/r/StableDiffusion/.rss
+        match: "qwen.?image"
+
+  # ==========================
+  # 動画生成
+  # ==========================
+  - id: seedance
+    name: Seedance
+    vendor: ByteDance
+    category: video
+    sources:
+      - type: fal
+        match: "seedance"
+      - type: rss
+        url: https://www.reddit.com/r/StableDiffusion/.rss
+        match: "seedance"
+      - type: rss
+        url: https://simonwillison.net/atom/everything/
+        match: "seedance"
+      - type: rss
+        url: https://huggingface.co/blog/feed.xml
+        match: "seedance"
+
+  - id: vidu
+    name: Vidu
+    vendor: Shengshu
+    category: video
+    sources:
+      - type: fal
+        match: "\\bvidu\\b"
+      - type: rss
+        url: https://simonwillison.net/atom/everything/
+        match: "\\bvidu\\b"
+
+  - id: kling
+    name: Kling
+    vendor: Kuaishou
+    category: video
+    sources:
+      - type: fal
+        match: "\\bkling\\b"
+        exclude: "(?i)(/edit\\b|/elements)"
+      - type: rss
+        url: https://www.reddit.com/r/StableDiffusion/.rss
+        match: "\\bkling\\b"
+      - type: rss
+        url: https://simonwillison.net/atom/everything/
+        match: "\\bkling\\b"
+
+  - id: ltx-video
+    name: LTX Video
+    vendor: Lightricks
+    category: video
+    sources:
+      # Track the Lightricks org so LTX-2, LTX-2.3, LTX-3 all surface.
+      - type: hf_author
+        author: Lightricks
+        name_match: "^LTX[-_.]?(Video|\\d)"
+        exclude: "(?i)(-fp[0-9]+|-nvfp|-bf[0-9]+|-int[48]|-gptq|-awq|-gguf|-mlx|-lora|-control|-ic-lora)"
+      - type: github
+        repo: Lightricks/LTX-Video
+      - type: fal
+        match: "\\bltx[- ]?(video|\\d)"
+      - type: rss
+        url: https://www.reddit.com/r/LocalLLaMA/.rss
+        match: "\\bltx[- ]?video"
+
+  - id: wan
+    name: WAN
+    vendor: Alibaba
+    category: video
+    sources:
+      # Track Wan-AI org, keep flagship T2V / I2V weights, drop precision
+      # variants and derivative finetunes.
+      - type: hf_author
+        author: Wan-AI
+        name_match: "^Wan[0-9.]+-(T2V|I2V|TI2V)"
+        exclude: "(?i)(-fp[0-9]+|-bf[0-9]+|-int[48]|-gptq|-awq|-gguf|-mlx|-lora|-diffusers|-animate|-s2v|-vace)"
+      - type: github
+        repo: Wan-Video/Wan2.2
+      - type: github
+        repo: Wan-Video/Wan2.1
+      - type: fal
+        match: "\\bwan[- ]?\\d"
+      - type: rss
+        url: https://www.reddit.com/r/LocalLLaMA/.rss
+        match: "\\bwan\\b"

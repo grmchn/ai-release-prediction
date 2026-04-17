@@ -1,0 +1,509 @@
+{
+  "claude-opus": [
+    {
+      "version": "4.0",
+      "date": "2025-05-22",
+      "source": "anthropic-news",
+      "url": "https://www.anthropic.com/news/claude-4",
+      "note": "Claude Opus 4 launch"
+    },
+    {
+      "version": "4.1",
+      "date": "2025-08-05",
+      "source": "anthropic-news",
+      "url": "https://www.anthropic.com/news/claude-opus-4-1",
+      "note": "Claude Opus 4.1"
+    },
+    {
+      "version": "4.5",
+      "date": "2025-11-24",
+      "source": "anthropic-news",
+      "url": "https://www.anthropic.com/news/claude-opus-4-5",
+      "note": "Claude Opus 4.5"
+    },
+    {
+      "version": "4.6",
+      "date": "2026-02-05",
+      "source": "anthropic-news",
+      "url": "https://www.anthropic.com/news/claude-opus-4-6",
+      "note": "Claude Opus 4.6"
+    },
+    {
+      "version": "4.7",
+      "date": "2026-04-16",
+      "source": "anthropic-news",
+      "url": "https://www.anthropic.com/news/claude-opus-4-7",
+      "note": "Claude Opus 4.7"
+    }
+  ],
+  "gpt": [
+    {
+      "version": "5",
+      "date": "2025-08-07",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/introducing-gpt-5/",
+      "note": "GPT-5 launch"
+    },
+    {
+      "version": "5.1",
+      "date": "2025-11-12",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/gpt-5-1/",
+      "note": "GPT-5.1 Instant/Thinking"
+    },
+    {
+      "version": "5.2",
+      "date": "2025-12-11",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/introducing-gpt-5-2/",
+      "note": "GPT-5.2"
+    },
+    {
+      "version": "5.3",
+      "date": "2026-03-03",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/gpt-5-3-instant/",
+      "note": "GPT-5.3 Instant"
+    },
+    {
+      "version": "5.4",
+      "date": "2026-03-05",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/introducing-gpt-5-4/",
+      "note": "GPT-5.4"
+    }
+  ],
+  "gemini-pro": [
+    {
+      "version": "2.5 Pro (exp)",
+      "date": "2025-03-25",
+      "source": "google-blog",
+      "url": "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025/",
+      "note": "2.5 Pro experimental"
+    },
+    {
+      "version": "2.5 Pro (GA)",
+      "date": "2025-06-17",
+      "source": "google-blog",
+      "url": "https://blog.google/technology/google-deepmind/google-gemini-updates-io-2025/",
+      "note": "2.5 Pro general availability"
+    },
+    {
+      "version": "3 Pro",
+      "date": "2025-11-18",
+      "source": "google-blog",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-3/",
+      "note": "Gemini 3 Pro"
+    },
+    {
+      "version": "3.1 Pro",
+      "date": "2026-02-19",
+      "source": "google-blog",
+      "url": "https://deepmind.google/models/gemini/pro/",
+      "note": "Gemini 3.1 Pro"
+    }
+  ],
+  "qwen-lm": [
+    {
+      "version": "Qwen3",
+      "date": "2025-04-29",
+      "source": "hf",
+      "url": "https://github.com/QwenLM/Qwen3",
+      "note": "Qwen3 series (including 32B) release"
+    },
+    {
+      "version": "Qwen3-Max-Preview",
+      "date": "2025-09-05",
+      "source": "alibaba",
+      "url": "https://dataconomy.com/2025/09/08/alibaba-qwen-3-max-preview/",
+      "note": "Qwen3-Max preview"
+    },
+    {
+      "version": "Qwen3-Next",
+      "date": "2025-09-11",
+      "source": "alibaba",
+      "url": "https://www.alibabacloud.com/blog/602536",
+      "note": "Qwen3-Next-80B-A3B"
+    },
+    {
+      "version": "Qwen3-Max",
+      "date": "2025-09-23",
+      "source": "alibaba",
+      "url": "https://www.marktechpost.com/2025/09/24/alibabas-qwen3-max-production-ready-thinking-mode-1t-parameters-and-day-one-coding-agentic-bench-signals/",
+      "note": "Qwen3-Max full release"
+    },
+    {
+      "version": "Qwen3-VL (235B)",
+      "date": "2025-09-23",
+      "source": "hf",
+      "url": "https://github.com/QwenLM/Qwen3-VL",
+      "note": "Qwen3-VL flagship release"
+    },
+    {
+      "version": "Qwen3.5",
+      "date": "2026-02-16",
+      "source": "alibaba",
+      "url": "https://en.wikipedia.org/wiki/Qwen",
+      "note": "Qwen3.5 and Qwen3.5-Plus release (397B-A17B MoE flagship)"
+    },
+    {
+      "version": "Qwen3.6-Plus",
+      "date": "2026-04-02",
+      "source": "alibaba",
+      "url": "https://www.caixinglobal.com/2026-04-02/alibaba-releases-qwen-36-plus-ai-model-with-enhanced-coding-capabilities-102430395.html",
+      "note": "Qwen3.6-Plus agentic flagship"
+    }
+  ],
+  "nano-banana": [
+    {
+      "version": "2.5 Flash Image (Nano Banana)",
+      "date": "2025-08-26",
+      "source": "google-blog",
+      "url": "https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/",
+      "note": "Initial Nano Banana launch"
+    },
+    {
+      "version": "Nano Banana Pro (3 Pro Image)",
+      "date": "2025-11-20",
+      "source": "google-blog",
+      "url": "https://blog.google/technology/ai/nano-banana-pro/",
+      "note": "Gemini 3 Pro Image / Nano Banana Pro"
+    },
+    {
+      "version": "Pro",
+      "date": "2025-11-20",
+      "url": "https://fal.ai/models/fal-ai/nano-banana-pro",
+      "source": "fal:fal-ai/nano-banana-pro",
+      "detected_at": "2026-04-17T01:51:09Z",
+      "note": "Nano Banana Pro is Google's new state-of-the-art image generation and editing model"
+    },
+    {
+      "version": "Nano Banana 2 (3.1 Flash Image)",
+      "date": "2026-02-26",
+      "source": "google-blog",
+      "url": "https://workspaceupdates.googleblog.com/2026/02/introducing-nano-banana-2-in-gemini-app.html",
+      "note": "Nano Banana 2 / Gemini 3.1 Flash Image rollout"
+    },
+    {
+      "version": "2",
+      "date": "2026-02-26",
+      "url": "https://fal.ai/models/fal-ai/nano-banana-2",
+      "source": "fal:fal-ai/nano-banana-2",
+      "detected_at": "2026-04-17T01:51:09Z",
+      "note": "Nano Banana 2 is Google's new state-of-the-art fast image generation and editing model"
+    }
+  ],
+  "gpt-image": [
+    {
+      "version": "GPT-4o image gen",
+      "date": "2025-03-25",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/introducing-4o-image-generation/",
+      "note": "Native 4o image generation in ChatGPT"
+    },
+    {
+      "version": "gpt-image-1",
+      "date": "2025-04-23",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/image-generation-api/",
+      "note": "API release of gpt-image-1"
+    },
+    {
+      "version": "gpt-image-1.5",
+      "date": "2025-12-16",
+      "source": "openai-blog",
+      "url": "https://techcrunch.com/2025/12/16/openai-continues-on-its-code-red-warpath-with-new-image-generation-model/",
+      "note": "GPT Image 1.5"
+    }
+  ],
+  "seedream": [
+    {
+      "version": "3.0",
+      "date": "2025-04-15",
+      "source": "bytedance",
+      "url": "https://seed.bytedance.com/en/blog/seedream-3-0-text-to-image-model-technical-report-released",
+      "note": "Seedream 3.0"
+    },
+    {
+      "version": "4.0",
+      "date": "2025-09-09",
+      "source": "bytedance",
+      "url": "https://seed.bytedance.com/en/blog/seedream-4-0-officially-released-beyond-drawing-into-imagination",
+      "note": "Seedream 4.0"
+    },
+    {
+      "version": "4.5",
+      "date": "2025-12-15",
+      "source": "bytedance",
+      "url": "https://www.mindstudio.ai/blog/what-is-bytedance-seedream-4-5",
+      "note": "Seedream 4.5"
+    },
+    {
+      "version": "5.0 Lite",
+      "date": "2026-02-13",
+      "source": "bytedance",
+      "url": "https://seed.bytedance.com/en/blog/deeper-thinking-more-accurate-generation-introducing-seedream-5-0-lite",
+      "note": "Seedream 5.0 Lite (public release; full Seedream 5.0 not yet released)"
+    }
+  ],
+  "qwen-image": [
+    {
+      "version": "Qwen-Image",
+      "date": "2025-08-04",
+      "source": "hf",
+      "url": "https://github.com/QwenLM/Qwen-Image",
+      "note": "Qwen-Image initial release"
+    },
+    {
+      "version": "Qwen-Image-Edit",
+      "date": "2025-08-19",
+      "source": "hf",
+      "url": "https://qwenimages.com/blog/qwen-image-edit-release",
+      "note": "Qwen-Image-Edit"
+    },
+    {
+      "version": "Qwen-Image-Edit-2509",
+      "date": "2025-09-22",
+      "source": "hf",
+      "url": "https://huggingface.co/Qwen",
+      "note": "September 2025 edit update"
+    },
+    {
+      "version": "Qwen-Image-Edit-2511",
+      "date": "2025-11-25",
+      "source": "alibaba",
+      "url": "https://news.aibase.com/news/23997",
+      "note": "Qwen-Image-Edit-2511"
+    },
+    {
+      "version": "Qwen-Image-2.0",
+      "date": "2026-02-10",
+      "source": "alibaba",
+      "url": "https://gigazine.net/gsc_news/en/20260212-qwen-image-2/",
+      "note": "Qwen-Image-2.0 (7B, unified generation + editing, native 2K)"
+    }
+  ],
+  "seedance": [
+    {
+      "version": "1.0 Pro",
+      "date": "2025-06-11",
+      "source": "bytedance",
+      "url": "https://seed.bytedance.com/en/seedance",
+      "note": "Seedance 1.0 Pro initial"
+    },
+    {
+      "version": "1.5 Pro",
+      "date": "2025-12-16",
+      "source": "bytedance",
+      "url": "https://seed.bytedance.com/en/blog/sound-and-vision-all-in-one-take-the-official-release-of-seedance-1-5-pro",
+      "note": "Seedance 1.5 Pro"
+    },
+    {
+      "version": "Pro 1.5",
+      "date": "2025-12-23",
+      "url": "https://fal.ai/models/fal-ai/bytedance/seedance/v1.5/pro/image-to-video",
+      "source": "fal:fal-ai/bytedance/seedance/v1.5/pro/image-to-video",
+      "detected_at": "2026-04-17T01:51:09Z",
+      "note": "Generate videos with audio with Seedance 1.5 (supports start & end frame) "
+    },
+    {
+      "version": "2.0",
+      "date": "2026-02-12",
+      "source": "bytedance",
+      "url": "https://en.wikipedia.org/wiki/Seedance_2.0",
+      "note": "Seedance 2.0"
+    }
+  ],
+  "vidu": [
+    {
+      "version": "1.0",
+      "date": "2024-07-30",
+      "source": "shengshu",
+      "url": "https://www.shengshu.com/en/news",
+      "note": "Vidu first commercial release"
+    },
+    {
+      "version": "1.5",
+      "date": "2024-11-13",
+      "source": "shengshu",
+      "url": "https://en.prnasia.com/releases/global/vidu-1-5-launch-marks-new-emergence-in-multimodal-ai-to-introduce-groundbreaking-consistency-controls-that-reshape-the-future-of-ai-video-production-468761.shtml",
+      "note": "Vidu 1.5 multimodal"
+    },
+    {
+      "version": "2.0",
+      "date": "2025-01-15",
+      "source": "shengshu",
+      "url": "https://www.prnewswire.com/news-releases/shengshu-technology-announces-vidu-2-0--offering-the-industrys-fastest-generative-video-302351677.html",
+      "note": "Vidu 2.0"
+    },
+    {
+      "version": "Q1",
+      "date": "2025-04-21",
+      "source": "shengshu",
+      "url": "https://www.prnewswire.com/news-releases/vidu-q1-model-launches-globally-offering-unmatched-realistic-vfx-capabilities-302433278.html",
+      "note": "Vidu Q1 VFX model"
+    },
+    {
+      "version": "Q2",
+      "date": "2025-10-20",
+      "source": "shengshu",
+      "url": "https://www.prnewswire.com/news-releases/starring-ai-vidu-q2-brings-performances-to-life-302570537.html",
+      "note": "Vidu Q2"
+    },
+    {
+      "version": "Q3",
+      "date": "2026-01-20",
+      "source": "shengshu",
+      "url": "https://www.prnewswire.com/news-releases/shengshu-launches-vidu-q3-reference-to-video-with-expanded-visual-and-audio-capabilities-302740489.html",
+      "note": "Vidu Q3"
+    }
+  ],
+  "kling": [
+    {
+      "version": "1.0",
+      "date": "2024-06-06",
+      "source": "wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Kling_AI",
+      "note": "Kling launch in KuaiYing"
+    },
+    {
+      "version": "1.5",
+      "date": "2024-09-19",
+      "source": "kuaishou",
+      "url": "https://aipure.ai/articles/kling-ai-1-5-released-with-motion-brush-feature-and-1080p-hd-videos",
+      "note": "Kling 1.5 with Motion Brush"
+    },
+    {
+      "version": "1.6",
+      "date": "2024-12-19",
+      "source": "kuaishou",
+      "url": "https://pandaily.com/kuaishou-kling-1-6-model-releases/",
+      "note": "Kling 1.6"
+    },
+    {
+      "version": "2.0",
+      "date": "2025-04-15",
+      "source": "kuaishou",
+      "url": "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-advances-20-era-empowering-everyone-tell-great-stories",
+      "note": "Kling 2.0 launch event"
+    },
+    {
+      "version": "2.1",
+      "date": "2025-05-29",
+      "source": "kuaishou",
+      "url": "https://en.wikipedia.org/wiki/Kling_AI",
+      "note": "Kling 2.1 series"
+    },
+    {
+      "version": "Turbo Pro 2.5",
+      "date": "2025-09-22",
+      "url": "https://fal.ai/models/fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
+      "source": "fal:fal-ai/kling-video/v2.5-turbo/pro/image-to-video",
+      "detected_at": "2026-04-17T01:51:09Z",
+      "note": "Kling 2.5 Turbo Pro: Top-tier image-to-video generation with unparalleled motion fluidity, cinematic visuals, and exceptional prompt precision."
+    },
+    {
+      "version": "Pro 2.6",
+      "date": "2025-12-02",
+      "url": "https://fal.ai/models/fal-ai/kling-video/v2.6/pro/image-to-video",
+      "source": "fal:fal-ai/kling-video/v2.6/pro/image-to-video",
+      "detected_at": "2026-04-17T01:51:09Z",
+      "note": "Kling 2.6 Pro: Top-tier image-to-video with cinematic visuals, fluid motion, and native audio generation."
+    },
+    {
+      "version": "3.0",
+      "date": "2026-01-31",
+      "source": "kuaishou",
+      "url": "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-launches-30-model-ushering-era-where-everyone-can-be",
+      "note": "Kling 3.0 global launch"
+    }
+  ],
+  "ltx-video": [
+    {
+      "version": "0.9",
+      "date": "2024-11-22",
+      "source": "github",
+      "url": "https://github.com/Lightricks/LTX-Video",
+      "note": "LTX Video 2B initial open-source release"
+    },
+    {
+      "version": "0.9.1",
+      "date": "2024-12-20",
+      "source": "hf",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-0.9.1",
+      "note": "LTX-Video 0.9.1"
+    },
+    {
+      "version": "0.9.5",
+      "date": "2025-03-06",
+      "source": "hf",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-0.9.5",
+      "note": "LTX-Video 0.9.5"
+    },
+    {
+      "version": "13B (0.9.7)",
+      "date": "2025-05-06",
+      "source": "github",
+      "url": "https://www.prnewswire.com/news-releases/lightricks-launches-13b-parameters-ltx-video-model-302447660.html",
+      "note": "LTXV 13B launch"
+    },
+    {
+      "version": "0.9.8",
+      "date": "2025-07-30",
+      "source": "hf",
+      "url": "https://huggingface.co/Lightricks/LTX-Video-0.9.8-13B-distilled",
+      "note": "LTX-Video 0.9.8 13B distilled"
+    },
+    {
+      "version": "LTX-2",
+      "date": "2025-10-22",
+      "source": "github",
+      "url": "https://en.wikipedia.org/wiki/LTX-2",
+      "note": "LTX-2 next generation"
+    },
+    {
+      "version": "LTX-2.3",
+      "date": "2026-03-05",
+      "source": "hf",
+      "url": "https://huggingface.co/Lightricks/LTX-2.3",
+      "note": "LTX-Video 2.3 (22B, native 4K, synchronized audio)"
+    }
+  ],
+  "wan": [
+    {
+      "version": "2.1",
+      "date": "2025-02-25",
+      "source": "alibaba",
+      "url": "https://github.com/Wan-Video/Wan2.1",
+      "note": "Wan 2.1 open-source release"
+    },
+    {
+      "version": "2.1-VACE",
+      "date": "2025-05-14",
+      "source": "alibaba",
+      "url": "https://github.com/Wan-Video/Wan2.1",
+      "note": "Wan 2.1-VACE editing extension"
+    },
+    {
+      "version": "2.2",
+      "date": "2025-07-29",
+      "source": "alibaba",
+      "url": "https://www.alibabacloud.com/en/press-room/alibaba-releases-wan2-2-to-uplift-cinematic",
+      "note": "Wan 2.2"
+    },
+    {
+      "version": "2.5",
+      "date": "2025-09-23",
+      "source": "alibaba",
+      "url": "https://wan2-1.com/blogs/wan2-5-preview-launched",
+      "note": "Wan 2.5 preview"
+    },
+    {
+      "version": "2.7",
+      "date": "2026-03-31",
+      "source": "alibaba",
+      "url": "https://www.financialcontent.com/article/abnewswire-2026-4-6-alibaba-launches-wan-27-breakthrough-ai-image-and-video-generation-model-with-thinking-mode",
+      "note": "Wan 2.7"
+    }
+  ]
+}

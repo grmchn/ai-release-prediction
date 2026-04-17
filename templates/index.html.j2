@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIリリース予想</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #1a0b2e;
+    --bg-mid: #2d1b4e;
+    --pink-hot: #ff6ec7;
+    --pink-soft: #ffa8d8;
+    --pink-glow: #ff9ccf;
+    --purple-glow: #b794f4;
+    --star-white: #fef9ff;
+    --gold: #ffd66b;
+    --mint: #7de3c4;
+    --text-primary: #fef9ff;
+    --text-secondary: #c4b5fd;
+    --text-tertiary: #9f86c0;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 140, 200, 0.22);
+    --card-hover: rgba(255, 140, 200, 0.5);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Baloo 2', 'Zen Maru Gothic', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  /* 夜空背景 */
+  .cosmos {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(255, 110, 199, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(183, 148, 244, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(125, 227, 196, 0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #1a0b2e 0%, #2d1b4e 50%, #1a0b2e 100%);
+  }
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--star-white);
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  .star.big { width: 3px; height: 3px; box-shadow: 0 0 8px rgba(255, 249, 255, 0.8); }
+  .star.gold { background: var(--gold); box-shadow: 0 0 6px rgba(255, 214, 107, 0.6); }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ヘッダー */
+  .header {
+    padding: 2rem 2rem 0.4rem;
+    text-align: center;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Baloo 2', 'Zen Maru Gothic', sans-serif;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--star-white) 0%, var(--pink-soft) 50%, var(--purple-glow) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .header .sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .header .today {
+    display: inline-block;
+    margin-top: 0.35rem;
+    padding: 4px 12px;
+    background: rgba(255, 214, 107, 0.1);
+    border: 1px solid rgba(255, 214, 107, 0.3);
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* セクションタイトル */
+  .section-title {
+    font-family: 'Baloo 2', 'Zen Maru Gothic', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0.5rem 2rem 0.8rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-title:not(:first-of-type) {
+    margin-top: 2.5rem;
+  }
+  .section-title .divider {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--card-border), transparent);
+  }
+
+  /* ========== タイムライン ========== */
+  .timeline-wrap {
+    margin: 0 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+  }
+  .timeline-legend {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot.past {
+    width: 10px; height: 10px;
+    background: var(--pink-glow);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--pink-glow);
+  }
+  .legend-dot.pred {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1.5px dashed var(--gold);
+  }
+  .legend-band {
+    width: 28px; height: 6px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius: 3px;
+    opacity: 0.5;
+  }
+  .legend-now {
+    width: 2px; height: 14px;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  /* Horizontal scroll container for timeline (months header + rows together). */
+  .timeline-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    padding-bottom: 4px;
+  }
+  .timeline-scroll::-webkit-scrollbar { height: 8px; }
+  .timeline-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+  }
+  .timeline-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 140, 200, 0.25);
+    border-radius: 4px;
+  }
+  .timeline-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 140, 200, 0.45); }
+
+  /* Grid metrics — shared by months-header and each timeline-row. */
+  :root {
+    --label-col: 140px;
+    --month-cell-w: 72px;
+    --track-min-width: calc(var(--month-cell-w) * {{ total_months }});
+  }
+
+  /* 月ヘッダー */
+  .months-header {
+    display: grid;
+    grid-template-columns: var(--label-col) 1fr;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    min-width: calc(var(--label-col) + 1rem + var(--track-min-width));
+  }
+  .months-header .spacer {
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    background: linear-gradient(90deg, var(--bg-mid) 85%, transparent);
+  }
+  .months-header .months {
+    display: flex;
+    padding: 0 2px;
+    min-width: var(--track-min-width);
+  }
+  .months-header .month-cell {
+    flex: 0 0 var(--month-cell-w);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    padding: 6px 0;
+    border-radius: 6px;
+  }
+  .months-header .month-cell.now {
+    color: var(--gold);
+    background: rgba(255, 214, 107, 0.1);
+    font-weight: 700;
+  }
+  .months-header .month-cell .year {
+    display: block;
+    font-size: 9px;
+    opacity: 0.6;
+    margin-bottom: 1px;
+  }
+
+  .timeline-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    position: relative;
+    --now-pct: 0.29;
+    min-width: calc(var(--label-col) + 1rem + var(--track-min-width));
+  }
+
+  /* 現在線（全行を貫通） */
+  .global-now-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--label-col) + 1rem + var(--track-min-width) * var(--now-pct));
+    width: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .global-now-line::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -3px;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  .timeline-row {
+    display: grid;
+    grid-template-columns: var(--label-col) 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.55rem 0;
+  }
+  .timeline-row.category-header {
+    padding: 0.8rem 0 0.3rem;
+  }
+  .category-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--pink-hot);
+    text-transform: uppercase;
+    font-weight: 700;
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    padding: 0 0.4rem;
+    background: linear-gradient(90deg, var(--bg-mid) 80%, transparent);
+  }
+  .model-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    background: linear-gradient(90deg, var(--bg-mid) 80%, transparent);
+    padding-right: 0.6rem;
+  }
+  .model-label .vendor-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .timeline-track {
+    position: relative;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    min-width: var(--track-min-width);
+  }
+  /* 月のグリッドライン */
+  .month-grid {
+    position: absolute;
+    inset: 0;
+    display: flex;
+  }
+  .month-grid .col {
+    flex: 1;
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .month-grid .col:last-child { border-right: none; }
+  .month-grid .col.now {
+    background: rgba(255, 214, 107, 0.04);
+  }
+
+  /* 過去のリリースドット */
+  .event-dot {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px; height: 12px;
+    background: var(--pink-glow);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 156, 207, 0.7);
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .event-dot:hover {
+    width: 16px; height: 16px;
+    background: var(--pink-hot);
+    box-shadow: 0 0 14px var(--pink-hot);
+    z-index: 10;
+  }
+  .event-dot.major {
+    width: 14px; height: 14px;
+    background: var(--pink-hot);
+    box-shadow: 0 0 10px var(--pink-hot);
+  }
+
+  /* 予測区間の帯 */
+  .prediction-band {
+    position: absolute;
+    top: 35%;
+    bottom: 35%;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255, 214, 107, 0.35) 0px,
+      rgba(255, 214, 107, 0.35) 4px,
+      rgba(255, 214, 107, 0.1) 4px,
+      rgba(255, 214, 107, 0.1) 8px
+    );
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  /* 予測中心ポイント */
+  .prediction-peak {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px; height: 14px;
+    border: 2px dashed var(--gold);
+    border-radius: 50%;
+    background: rgba(26, 11, 46, 0.95);
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .prediction-peak:hover {
+    width: 18px; height: 18px;
+    background: rgba(255, 214, 107, 0.2);
+    z-index: 10;
+  }
+  .prediction-peak::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: fixed;
+    background: rgba(26, 11, 46, 0.98);
+    border: 1px solid var(--card-hover);
+    border-radius: 12px;
+    padding: 10px 14px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    min-width: 180px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .tip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    gap: 10px;
+  }
+  .tooltip .tip-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    padding: 2px 8px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .tooltip .tip-type.past {
+    background: rgba(255, 156, 207, 0.15);
+    color: var(--pink-glow);
+  }
+  .tooltip .tip-type.pred {
+    background: rgba(255, 214, 107, 0.15);
+    color: var(--gold);
+  }
+  .tooltip .tip-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+  .tooltip .tip-sublabel {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    margin-bottom: 1px;
+  }
+  .tooltip .tip-version {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .tooltip .tip-detail {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .tooltip .tip-range {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--card-border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+  }
+
+  /* ========== タブ ========== */
+  .tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 2rem 1.2rem;
+    flex-wrap: wrap;
+  }
+  .tab {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    padding: 8px 20px;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .tab:hover {
+    border-color: var(--card-hover);
+    color: var(--text-primary);
+  }
+  .tab.active {
+    background: rgba(255, 110, 199, 0.15);
+    border-color: var(--pink-hot);
+    color: var(--pink-hot);
+  }
+
+  /* ========== カードグリッド ========== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+    padding: 0 2rem 4rem;
+  }
+  .cards-grid .card[hidden] { display: none; }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 1.4rem;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    border-color: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, rgba(255, 110, 199, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .card-header { margin-bottom: 1rem; }
+  .card-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--pink-hot);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .card-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .countdown {
+    background: linear-gradient(135deg,
+      rgba(255, 110, 199, 0.12) 0%,
+      rgba(255, 214, 107, 0.08) 100%);
+    border: 1px solid rgba(255, 156, 207, 0.25);
+    border-radius: 14px;
+    padding: 0.9rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+  .countdown-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+  }
+  .countdown-value {
+    font-size: 44px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--pink-soft), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .countdown-unit {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-left: 0.3rem;
+    font-weight: 600;
+  }
+
+  .card-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(255, 140, 200, 0.15);
+    margin-top: 0.5rem;
+  }
+  .stat-label {
+    color: var(--text-tertiary);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+  .stat-value.pred { color: var(--gold); }
+  .stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+  .stat-version-line {
+    font-family: 'Baloo 2', 'Zen Maru Gothic', system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-top: 0.4rem;
+    overflow-wrap: anywhere;
+  }
+  .stat-version-line.current {
+    font-size: 16px;
+    color: var(--pink-glow);
+  }
+  .stat-version-line.pred {
+    font-size: 16px;
+    color: var(--gold);
+  }
+  .stat-wide { grid-column: 1 / -1; }
+
+  /* フッター */
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+  }
+  .footer span { color: var(--pink-glow); }
+
+  @media (max-width: 768px) {
+    .timeline-row { grid-template-columns: 100px 1fr; }
+    .months-header { grid-template-columns: 100px 1fr; }
+    .model-label { font-size: 12px; }
+    .cards-grid { padding: 0 1rem 3rem; }
+    .timeline-wrap { margin: 0 1rem; padding: 1rem; }
+    .section-title { margin: 2rem 1rem 1rem; }
+    .months-header .month-cell { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cosmos"></div>
+<div class="stars" id="stars"></div>
+
+<header class="header">
+  <h1>AIリリース予想</h1>
+  <div class="today">{{ updated_at_display }}</div>
+</header>
+
+<!-- ========== 上部: タイムライン ========== -->
+<h2 class="section-title">
+  <span>リリースタイムライン</span>
+  <span class="divider"></span>
+</h2>
+
+<div class="timeline-wrap">
+  <div class="timeline-legend">
+    <div class="legend-item"><span class="legend-dot past"></span>過去のリリース</div>
+    <div class="legend-item"><span class="legend-band"></span>予測区間</div>
+    <div class="legend-item"><span class="legend-dot pred"></span>予測中心</div>
+    <div class="legend-item"><span class="legend-now"></span>現在</div>
+  </div>
+
+  <div class="timeline-scroll" id="timeline-scroll">
+    <!-- 月ヘッダー（上部に配置） -->
+    <div class="months-header">
+      <div class="spacer"></div>
+      <div class="months">
+        {%- for m in months %}
+        <div class="month-cell{% if m.is_now %} now{% endif %}">{% if m.year_label %}<span class="year">{{ m.year_label }}</span>{% endif %}{{ m.label }}</div>
+        {%- endfor %}
+      </div>
+    </div>
+
+    <div class="timeline-rows" id="timeline-rows">
+      <!-- JS で動的生成 -->
+    </div>
+  </div>
+</div>
+
+<!-- ========== 下部: 詳細カード ========== -->
+<h2 class="section-title">
+  <span>各モデルの詳細</span>
+  <span class="divider"></span>
+</h2>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" data-cat="llm">LLM</button>
+  <button class="tab" data-cat="image">IMAGE</button>
+  <button class="tab" data-cat="video">VIDEO</button>
+</div>
+
+<div class="cards-grid" id="cards-grid">
+  {%- for model in models %}
+  <div class="card" data-cat="{{ model.category }}">
+    <div class="card-header">
+      <div class="card-category">{{ model.category|upper }} / {{ model.vendor|upper }}</div>
+      <div class="card-name">{{ model.name }}</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">{{ model.countdown_label }}</div>
+      <div>
+        <span class="countdown-value">{{ model.countdown_value }}</span>
+        <span class="countdown-unit">{{ model.countdown_unit }}</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">{{ model.last_date or '—' }}</div>
+        {% if model.latest_full %}<div class="stat-version-line current">{{ model.latest_full }}</div>{% endif %}
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">{{ model.predicted_display or '—' }}</div>
+        {% if model.predicted_full %}<div class="stat-version-line pred">{{ model.predicted_full }}</div>{% endif %}
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">{% if model.mean_interval_days is not none %}{{ model.mean_interval_days }}日{% else %}—{% endif %}</div>
+      </div>
+    </div>
+  </div>
+  {%- endfor %}
+
+</div>
+
+<!-- ツールチップ -->
+<div id="tooltip" class="tooltip"></div>
+
+<footer class="footer">
+  {{ updated_at_display }} · <span>Auto-refresh</span>: {{ refresh_interval }}
+</footer>
+
+<script>
+  // ========== 星を散らす ==========
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    const r = Math.random();
+    s.className = 'star' + (r > 0.85 ? ' big' : '') + (r > 0.94 ? ' gold' : '');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 3 + 's';
+    s.style.animationDuration = (2 + Math.random() * 3) + 's';
+    starsEl.appendChild(s);
+  }
+
+  // ========== タイムラインデータ ==========
+  // Injected by render.py. `NOW_PERCENT` is the current date within the 12-month window.
+  const NOW_PERCENT = {{ now_percent }};
+  const timelineData = {{ timeline_data | tojson }};
+
+  // ========== タイムライン描画 ==========
+  const rowsEl = document.getElementById('timeline-rows');
+  const tooltipEl = document.getElementById('tooltip');
+
+  function showTooltip(e, data) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    tooltipEl.innerHTML = data.html;
+    tooltipEl.classList.add('show');
+    const tipRect = tooltipEl.getBoundingClientRect();
+    let x = rect.left + rect.width / 2 - tipRect.width / 2;
+    let y = rect.top - tipRect.height - 8;
+    if (y < 8) y = rect.bottom + 8;
+    if (x < 8) x = 8;
+    if (x + tipRect.width > window.innerWidth - 8) x = window.innerWidth - tipRect.width - 8;
+    tooltipEl.style.left = x + 'px';
+    tooltipEl.style.top = y + 'px';
+  }
+  function hideTooltip() {
+    tooltipEl.classList.remove('show');
+  }
+
+  timelineData.forEach(item => {
+    if (item.category) {
+      const row = document.createElement('div');
+      row.className = 'timeline-row category-header';
+      row.innerHTML = `<span class="category-label">${item.category}</span>`;
+      rowsEl.appendChild(row);
+      return;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'timeline-row';
+
+    // ラベル
+    const label = document.createElement('span');
+    label.className = 'model-label';
+    label.innerHTML = `${item.name}<span class="vendor-mark">${item.vendor}</span>`;
+    row.appendChild(label);
+
+    // トラック
+    const track = document.createElement('div');
+    track.className = 'timeline-track';
+
+    // 月グリッド
+    const grid = document.createElement('div');
+    grid.className = 'month-grid';
+    const TOTAL_MONTHS = {{ total_months }};
+    const NOW_MONTH_INDEX = {{ now_month_index }};
+    for (let m = 0; m < TOTAL_MONTHS; m++) {
+      const col = document.createElement('div');
+      col.className = 'col' + (m === NOW_MONTH_INDEX ? ' now' : '');
+      grid.appendChild(col);
+    }
+    track.appendChild(grid);
+
+    // 予測帯（先に描画して下に置く）
+    if (item.prediction) {
+      const band = document.createElement('div');
+      band.className = 'prediction-band';
+      band.style.left = item.prediction.start + '%';
+      band.style.right = (100 - item.prediction.end) + '%';
+      track.appendChild(band);
+
+      const peak = document.createElement('div');
+      peak.className = 'prediction-peak';
+      peak.style.left = item.prediction.peak + '%';
+      peak.addEventListener('mouseenter', e => showTooltip(e, {
+        html: `
+          <div class="tip-header">
+            <span class="tip-type pred">予測</span>
+            <span class="tip-date">${item.prediction.date}</span>
+          </div>
+          <div class="tip-sublabel">次のリリース予測</div>
+          <div class="tip-version">${item.prediction.predicted_full || item.name}</div>
+          <div class="tip-range">${item.prediction.range}（95%区間）</div>
+        `
+      }));
+      peak.addEventListener('mouseleave', hideTooltip);
+      track.appendChild(peak);
+    }
+
+    // 過去のドット
+    item.events.forEach(ev => {
+      const dot = document.createElement('div');
+      dot.className = 'event-dot' + (ev.major ? ' major' : '');
+      dot.style.left = ev.percent + '%';
+      dot.addEventListener('mouseenter', e => showTooltip(e, {
+        html: `
+          <div class="tip-header">
+            <span class="tip-type past">リリース済</span>
+            <span class="tip-date">${ev.date}</span>
+          </div>
+          <div class="tip-version">${ev.label || item.name + ' ' + ev.version}</div>
+          ${ev.note ? `<div class="tip-detail">${ev.note}</div>` : ''}
+        `
+      }));
+      dot.addEventListener('mouseleave', hideTooltip);
+      track.appendChild(dot);
+    });
+
+    row.appendChild(track);
+    rowsEl.appendChild(row);
+  });
+
+  // グローバル現在線（全行を貫通）
+  rowsEl.style.setProperty('--now-pct', NOW_PERCENT / 100);
+  const globalNow = document.createElement('div');
+  globalNow.className = 'global-now-line';
+  rowsEl.appendChild(globalNow);
+
+  // 初期表示では現在位置が中央に来るようスクロール
+  const scrollEl = document.getElementById('timeline-scroll');
+  if (scrollEl) {
+    requestAnimationFrame(() => {
+      const labelCol = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--label-col')) || 140;
+      const trackMinWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--track-min-width')) || 0;
+      const nowAbs = labelCol + 16 + trackMinWidth * (NOW_PERCENT / 100);
+      scrollEl.scrollLeft = Math.max(0, nowAbs - scrollEl.clientWidth / 2);
+    });
+  }
+
+  // ========== カードのタブ切替 ==========
+  const tabsEl = document.getElementById('tabs');
+  const cardsEl = document.getElementById('cards-grid');
+
+  function applyFilter(cat) {
+    cardsEl.querySelectorAll('.card').forEach(c => {
+      c.hidden = c.dataset.cat !== cat;
+    });
+  }
+
+  tabsEl.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.cat);
+    });
+  });
+
+  // 初期表示: LLM
+  applyFilter('llm');
+</script>
+
+</body>
+</html>

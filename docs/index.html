@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIリリース予想</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #1a0b2e;
+    --bg-mid: #2d1b4e;
+    --pink-hot: #ff6ec7;
+    --pink-soft: #ffa8d8;
+    --pink-glow: #ff9ccf;
+    --purple-glow: #b794f4;
+    --star-white: #fef9ff;
+    --gold: #ffd66b;
+    --mint: #7de3c4;
+    --text-primary: #fef9ff;
+    --text-secondary: #c4b5fd;
+    --text-tertiary: #9f86c0;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 140, 200, 0.22);
+    --card-hover: rgba(255, 140, 200, 0.5);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Baloo 2', 'Zen Maru Gothic', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  /* 夜空背景 */
+  .cosmos {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(255, 110, 199, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(183, 148, 244, 0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(125, 227, 196, 0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #1a0b2e 0%, #2d1b4e 50%, #1a0b2e 100%);
+  }
+
+  .stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--star-white);
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  .star.big { width: 3px; height: 3px; box-shadow: 0 0 8px rgba(255, 249, 255, 0.8); }
+  .star.gold { background: var(--gold); box-shadow: 0 0 6px rgba(255, 214, 107, 0.6); }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ヘッダー */
+  .header {
+    padding: 2rem 2rem 0.4rem;
+    text-align: center;
+    position: relative;
+  }
+  .header h1 {
+    font-family: 'Baloo 2', 'Zen Maru Gothic', sans-serif;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--star-white) 0%, var(--pink-soft) 50%, var(--purple-glow) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .header .sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .header .today {
+    display: inline-block;
+    margin-top: 0.35rem;
+    padding: 4px 12px;
+    background: rgba(255, 214, 107, 0.1);
+    border: 1px solid rgba(255, 214, 107, 0.3);
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* セクションタイトル */
+  .section-title {
+    font-family: 'Baloo 2', 'Zen Maru Gothic', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0.5rem 2rem 0.8rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-title:not(:first-of-type) {
+    margin-top: 2.5rem;
+  }
+  .section-title .divider {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--card-border), transparent);
+  }
+
+  /* ========== タイムライン ========== */
+  .timeline-wrap {
+    margin: 0 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+  }
+  .timeline-legend {
+    display: flex;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot.past {
+    width: 10px; height: 10px;
+    background: var(--pink-glow);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--pink-glow);
+  }
+  .legend-dot.pred {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1.5px dashed var(--gold);
+  }
+  .legend-band {
+    width: 28px; height: 6px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    border-radius: 3px;
+    opacity: 0.5;
+  }
+  .legend-now {
+    width: 2px; height: 14px;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  /* Horizontal scroll container for timeline (months header + rows together). */
+  .timeline-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-behavior: smooth;
+    padding-bottom: 4px;
+  }
+  .timeline-scroll::-webkit-scrollbar { height: 8px; }
+  .timeline-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+  }
+  .timeline-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 140, 200, 0.25);
+    border-radius: 4px;
+  }
+  .timeline-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 140, 200, 0.45); }
+
+  /* Grid metrics — shared by months-header and each timeline-row. */
+  :root {
+    --label-col: 140px;
+    --month-cell-w: 72px;
+    --track-min-width: calc(var(--month-cell-w) * 24);
+  }
+
+  /* 月ヘッダー */
+  .months-header {
+    display: grid;
+    grid-template-columns: var(--label-col) 1fr;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+    min-width: calc(var(--label-col) + 1rem + var(--track-min-width));
+  }
+  .months-header .spacer {
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    background: linear-gradient(90deg, var(--bg-mid) 85%, transparent);
+  }
+  .months-header .months {
+    display: flex;
+    padding: 0 2px;
+    min-width: var(--track-min-width);
+  }
+  .months-header .month-cell {
+    flex: 0 0 var(--month-cell-w);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    padding: 6px 0;
+    border-radius: 6px;
+  }
+  .months-header .month-cell.now {
+    color: var(--gold);
+    background: rgba(255, 214, 107, 0.1);
+    font-weight: 700;
+  }
+  .months-header .month-cell .year {
+    display: block;
+    font-size: 9px;
+    opacity: 0.6;
+    margin-bottom: 1px;
+  }
+
+  .timeline-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    position: relative;
+    --now-pct: 0.29;
+    min-width: calc(var(--label-col) + 1rem + var(--track-min-width));
+  }
+
+  /* 現在線（全行を貫通） */
+  .global-now-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--label-col) + 1rem + var(--track-min-width) * var(--now-pct));
+    width: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .global-now-line::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -3px;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  .timeline-row {
+    display: grid;
+    grid-template-columns: var(--label-col) 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.55rem 0;
+  }
+  .timeline-row.category-header {
+    padding: 0.8rem 0 0.3rem;
+  }
+  .category-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--pink-hot);
+    text-transform: uppercase;
+    font-weight: 700;
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    padding: 0 0.4rem;
+    background: linear-gradient(90deg, var(--bg-mid) 80%, transparent);
+  }
+  .model-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    background: linear-gradient(90deg, var(--bg-mid) 80%, transparent);
+    padding-right: 0.6rem;
+  }
+  .model-label .vendor-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .timeline-track {
+    position: relative;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    min-width: var(--track-min-width);
+  }
+  /* 月のグリッドライン */
+  .month-grid {
+    position: absolute;
+    inset: 0;
+    display: flex;
+  }
+  .month-grid .col {
+    flex: 1;
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .month-grid .col:last-child { border-right: none; }
+  .month-grid .col.now {
+    background: rgba(255, 214, 107, 0.04);
+  }
+
+  /* 過去のリリースドット */
+  .event-dot {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px; height: 12px;
+    background: var(--pink-glow);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 156, 207, 0.7);
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .event-dot:hover {
+    width: 16px; height: 16px;
+    background: var(--pink-hot);
+    box-shadow: 0 0 14px var(--pink-hot);
+    z-index: 10;
+  }
+  .event-dot.major {
+    width: 14px; height: 14px;
+    background: var(--pink-hot);
+    box-shadow: 0 0 10px var(--pink-hot);
+  }
+
+  /* 予測区間の帯 */
+  .prediction-band {
+    position: absolute;
+    top: 35%;
+    bottom: 35%;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255, 214, 107, 0.35) 0px,
+      rgba(255, 214, 107, 0.35) 4px,
+      rgba(255, 214, 107, 0.1) 4px,
+      rgba(255, 214, 107, 0.1) 8px
+    );
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  /* 予測中心ポイント */
+  .prediction-peak {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px; height: 14px;
+    border: 2px dashed var(--gold);
+    border-radius: 50%;
+    background: rgba(26, 11, 46, 0.95);
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .prediction-peak:hover {
+    width: 18px; height: 18px;
+    background: rgba(255, 214, 107, 0.2);
+    z-index: 10;
+  }
+  .prediction-peak::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: fixed;
+    background: rgba(26, 11, 46, 0.98);
+    border: 1px solid var(--card-hover);
+    border-radius: 12px;
+    padding: 10px 14px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    min-width: 180px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+  }
+  .tooltip.show { opacity: 1; }
+  .tooltip .tip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    gap: 10px;
+  }
+  .tooltip .tip-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    padding: 2px 8px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .tooltip .tip-type.past {
+    background: rgba(255, 156, 207, 0.15);
+    color: var(--pink-glow);
+  }
+  .tooltip .tip-type.pred {
+    background: rgba(255, 214, 107, 0.15);
+    color: var(--gold);
+  }
+  .tooltip .tip-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+  }
+  .tooltip .tip-sublabel {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    margin-bottom: 1px;
+  }
+  .tooltip .tip-version {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .tooltip .tip-detail {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .tooltip .tip-range {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--card-border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+  }
+
+  /* ========== タブ ========== */
+  .tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 2rem 1.2rem;
+    flex-wrap: wrap;
+  }
+  .tab {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    padding: 8px 20px;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .tab:hover {
+    border-color: var(--card-hover);
+    color: var(--text-primary);
+  }
+  .tab.active {
+    background: rgba(255, 110, 199, 0.15);
+    border-color: var(--pink-hot);
+    color: var(--pink-hot);
+  }
+
+  /* ========== カードグリッド ========== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+    padding: 0 2rem 4rem;
+  }
+  .cards-grid .card[hidden] { display: none; }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 1.4rem;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    border-color: var(--card-hover);
+    transform: translateY(-2px);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, rgba(255, 110, 199, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .card-header { margin-bottom: 1rem; }
+  .card-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--pink-hot);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .card-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .countdown {
+    background: linear-gradient(135deg,
+      rgba(255, 110, 199, 0.12) 0%,
+      rgba(255, 214, 107, 0.08) 100%);
+    border: 1px solid rgba(255, 156, 207, 0.25);
+    border-radius: 14px;
+    padding: 0.9rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+  .countdown-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    font-weight: 700;
+  }
+  .countdown-value {
+    font-size: 44px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--pink-soft), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .countdown-unit {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-left: 0.3rem;
+    font-weight: 600;
+  }
+
+  .card-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(255, 140, 200, 0.15);
+    margin-top: 0.5rem;
+  }
+  .stat-label {
+    color: var(--text-tertiary);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+  .stat-value.pred { color: var(--gold); }
+  .stat-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+  .stat-version-line {
+    font-family: 'Baloo 2', 'Zen Maru Gothic', system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-top: 0.4rem;
+    overflow-wrap: anywhere;
+  }
+  .stat-version-line.current {
+    font-size: 16px;
+    color: var(--pink-glow);
+  }
+  .stat-version-line.pred {
+    font-size: 16px;
+    color: var(--gold);
+  }
+  .stat-wide { grid-column: 1 / -1; }
+
+  /* フッター */
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+  }
+  .footer span { color: var(--pink-glow); }
+
+  @media (max-width: 768px) {
+    .timeline-row { grid-template-columns: 100px 1fr; }
+    .months-header { grid-template-columns: 100px 1fr; }
+    .model-label { font-size: 12px; }
+    .cards-grid { padding: 0 1rem 3rem; }
+    .timeline-wrap { margin: 0 1rem; padding: 1rem; }
+    .section-title { margin: 2rem 1rem 1rem; }
+    .months-header .month-cell { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cosmos"></div>
+<div class="stars" id="stars"></div>
+
+<header class="header">
+  <h1>AIリリース予想</h1>
+  <div class="today">最終更新 2026-04-17 10:56 JST</div>
+</header>
+
+<!-- ========== 上部: タイムライン ========== -->
+<h2 class="section-title">
+  <span>リリースタイムライン</span>
+  <span class="divider"></span>
+</h2>
+
+<div class="timeline-wrap">
+  <div class="timeline-legend">
+    <div class="legend-item"><span class="legend-dot past"></span>過去のリリース</div>
+    <div class="legend-item"><span class="legend-band"></span>予測区間</div>
+    <div class="legend-item"><span class="legend-dot pred"></span>予測中心</div>
+    <div class="legend-item"><span class="legend-now"></span>現在</div>
+  </div>
+
+  <div class="timeline-scroll" id="timeline-scroll">
+    <!-- 月ヘッダー（上部に配置） -->
+    <div class="months-header">
+      <div class="spacer"></div>
+      <div class="months">
+        <div class="month-cell"><span class="year">&#39;24</span>12月</div>
+        <div class="month-cell"><span class="year">&#39;25</span>1月</div>
+        <div class="month-cell">2月</div>
+        <div class="month-cell">3月</div>
+        <div class="month-cell">4月</div>
+        <div class="month-cell">5月</div>
+        <div class="month-cell">6月</div>
+        <div class="month-cell">7月</div>
+        <div class="month-cell">8月</div>
+        <div class="month-cell">9月</div>
+        <div class="month-cell">10月</div>
+        <div class="month-cell">11月</div>
+        <div class="month-cell">12月</div>
+        <div class="month-cell"><span class="year">&#39;26</span>1月</div>
+        <div class="month-cell">2月</div>
+        <div class="month-cell">3月</div>
+        <div class="month-cell now">4月</div>
+        <div class="month-cell">5月</div>
+        <div class="month-cell">6月</div>
+        <div class="month-cell">7月</div>
+        <div class="month-cell">8月</div>
+        <div class="month-cell">9月</div>
+        <div class="month-cell">10月</div>
+        <div class="month-cell">11月</div>
+      </div>
+    </div>
+
+    <div class="timeline-rows" id="timeline-rows">
+      <!-- JS で動的生成 -->
+    </div>
+  </div>
+</div>
+
+<!-- ========== 下部: 詳細カード ========== -->
+<h2 class="section-title">
+  <span>各モデルの詳細</span>
+  <span class="divider"></span>
+</h2>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" data-cat="llm">LLM</button>
+  <button class="tab" data-cat="image">IMAGE</button>
+  <button class="tab" data-cat="video">VIDEO</button>
+</div>
+
+<div class="cards-grid" id="cards-grid">
+  <div class="card" data-cat="llm">
+    <div class="card-header">
+      <div class="card-category">LLM / ANTHROPIC</div>
+      <div class="card-name">Claude Opus</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">73</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.04.16</div>
+        <div class="stat-version-line current">Claude Opus 4.7</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">06.29 ±38日</div>
+        <div class="stat-version-line pred">Claude Opus 4.8?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">82日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="llm">
+    <div class="card-header">
+      <div class="card-category">LLM / OPENAI</div>
+      <div class="card-name">GPT</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">13</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.03.05</div>
+        <div class="stat-version-line current">GPT 5.4</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">04.30 ±87日</div>
+        <div class="stat-version-line pred">GPT 5.5?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">52日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="llm">
+    <div class="card-header">
+      <div class="card-category">LLM / GOOGLE</div>
+      <div class="card-name">Gemini Pro</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">36</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.02.19</div>
+        <div class="stat-version-line current">Gemini Pro 3.1 Pro</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">05.23 ±75日</div>
+        <div class="stat-version-line pred">Gemini Pro 3.2 Pro?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">110日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="llm">
+    <div class="card-header">
+      <div class="card-category">LLM / ALIBABA</div>
+      <div class="card-name">Qwen</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">13</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.04.02</div>
+        <div class="stat-version-line current">Qwen 3.6-Plus</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">04.30 ±130日</div>
+        <div class="stat-version-line pred">Qwen 3.7-Plus?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">51日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="image">
+    <div class="card-header">
+      <div class="card-category">IMAGE / GOOGLE</div>
+      <div class="card-name">Nano Banana</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">予測日からの経過</div>
+      <div>
+        <span class="countdown-value">7</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.02.26</div>
+        <div class="stat-version-line current">Nano Banana 2 (3.1 Flash Image)</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">04.10 ±105日</div>
+        <div class="stat-version-line pred">Nano Banana 3?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">46日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="image">
+    <div class="card-header">
+      <div class="card-category">IMAGE / OPENAI</div>
+      <div class="card-name">GPT-Image</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">11</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2025.12.16</div>
+        <div class="stat-version-line current">GPT-Image 1.5</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">04.28 ±288日</div>
+        <div class="stat-version-line pred">GPT-Image 1.6?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">133日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="image">
+    <div class="card-header">
+      <div class="card-category">IMAGE / BYTEDANCE</div>
+      <div class="card-name">Seedream</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">34</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.02.13</div>
+        <div class="stat-version-line current">Seedream 5.0 Lite</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">05.21 ±86日</div>
+        <div class="stat-version-line pred">Seedream 5.1 Lite?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">101日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="image">
+    <div class="card-header">
+      <div class="card-category">IMAGE / ALIBABA</div>
+      <div class="card-name">Qwen-Image</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">予測日からの経過</div>
+      <div>
+        <span class="countdown-value">17</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.02.10</div>
+        <div class="stat-version-line current">Qwen-Image 2.0</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">03.31 ±55日</div>
+        <div class="stat-version-line pred">Qwen-Image 2.1?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">48日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="video">
+    <div class="card-header">
+      <div class="card-category">VIDEO / BYTEDANCE</div>
+      <div class="card-name">Seedance</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">予測日からの経過</div>
+      <div>
+        <span class="countdown-value">13</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.02.12</div>
+        <div class="stat-version-line current">Seedance 2.0</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">04.04 ±185日</div>
+        <div class="stat-version-line pred">Seedance 2.1?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">82日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="video">
+    <div class="card-header">
+      <div class="card-category">VIDEO / SHENGSHU</div>
+      <div class="card-name">Vidu</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">7</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.01.20</div>
+        <div class="stat-version-line current">Vidu Q3</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">04.24 ±101日</div>
+        <div class="stat-version-line pred">Vidu Q4?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">108日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="video">
+    <div class="card-header">
+      <div class="card-category">VIDEO / KUAISHOU</div>
+      <div class="card-name">Kling</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">予測日からの経過</div>
+      <div>
+        <span class="countdown-value">10</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.01.31</div>
+        <div class="stat-version-line current">Kling 3.0</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">04.07 ±61日</div>
+        <div class="stat-version-line pred">Kling 3.1?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">73日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="video">
+    <div class="card-header">
+      <div class="card-category">VIDEO / LIGHTRICKS</div>
+      <div class="card-name">LTX Video</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">41</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.03.05</div>
+        <div class="stat-version-line current">LTX Video 2.3</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">05.28 ±60日</div>
+        <div class="stat-version-line pred">LTX Video 2.4?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">91日</div>
+      </div>
+    </div>
+  </div>
+  <div class="card" data-cat="video">
+    <div class="card-header">
+      <div class="card-category">VIDEO / ALIBABA</div>
+      <div class="card-name">WAN</div>
+    </div>
+    <div class="countdown">
+      <div class="countdown-label">次のリリースまで</div>
+      <div>
+        <span class="countdown-value">60</span>
+        <span class="countdown-unit">日</span>
+      </div>
+    </div>
+    <div class="card-stats">
+      <div>
+        <div class="stat-label">前回</div>
+        <div class="stat-value">2026.03.31</div>
+        <div class="stat-version-line current">WAN 2.7</div>
+      </div>
+      <div>
+        <div class="stat-label">予測</div>
+        <div class="stat-value pred">06.16 ±118日</div>
+        <div class="stat-version-line pred">WAN 2.8?</div>
+      </div>
+      <div class="stat-wide">
+        <div class="stat-label">平均間隔</div>
+        <div class="stat-value">100日</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ツールチップ -->
+<div id="tooltip" class="tooltip"></div>
+
+<footer class="footer">
+  最終更新 2026-04-17 10:56 JST · <span>Auto-refresh</span>: 6h
+</footer>
+
+<script>
+  // ========== 星を散らす ==========
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    const r = Math.random();
+    s.className = 'star' + (r > 0.85 ? ' big' : '') + (r > 0.94 ? ' gold' : '');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    s.style.animationDelay = Math.random() * 3 + 's';
+    s.style.animationDuration = (2 + Math.random() * 3) + 's';
+    starsEl.appendChild(s);
+  }
+
+  // ========== タイムラインデータ ==========
+  // Injected by render.py. `NOW_PERCENT` is the current date within the 12-month window.
+  const NOW_PERCENT = 68.767;
+  const timelineData = [{"category": "LLM"}, {"events": [{"date": "2025.05.22", "label": "Claude Opus 4.0", "note": "Claude Opus 4 launch", "percent": 23.562, "version": "4.0"}, {"date": "2025.08.05", "label": "Claude Opus 4.1", "note": "Claude Opus 4.1", "percent": 33.836, "version": "4.1"}, {"date": "2025.11.24", "label": "Claude Opus 4.5", "note": "Claude Opus 4.5", "percent": 49.041, "version": "4.5"}, {"date": "2026.02.05", "label": "Claude Opus 4.6", "note": "Claude Opus 4.6", "percent": 59.041, "version": "4.6"}, {"date": "2026.04.16", "label": "Claude Opus 4.7", "major": true, "note": "Claude Opus 4.7", "percent": 68.63, "version": "4.7"}], "name": "Claude Opus", "prediction": {"date": "2026.06.29", "end": 83.973, "peak": 78.767, "predicted_full": "Claude Opus 4.8?", "predicted_version": "4.8?", "range": "\u00b138\u65e5", "start": 73.562}, "vendor": "Anthropic"}, {"events": [{"date": "2025.08.07", "label": "GPT 5", "note": "GPT-5 launch", "percent": 34.11, "version": "5"}, {"date": "2025.11.12", "label": "GPT 5.1", "note": "GPT-5.1 Instant/Thinking", "percent": 47.397, "version": "5.1"}, {"date": "2025.12.11", "label": "GPT 5.2", "note": "GPT-5.2", "percent": 51.37, "version": "5.2"}, {"date": "2026.03.03", "label": "GPT 5.3", "note": "GPT-5.3 Instant", "percent": 62.603, "version": "5.3"}, {"date": "2026.03.05", "label": "GPT 5.4", "major": true, "note": "GPT-5.4", "percent": 62.877, "version": "5.4"}], "name": "GPT", "prediction": {"date": "2026.04.30", "end": 82.466, "peak": 70.548, "predicted_full": "GPT 5.5?", "predicted_version": "5.5?", "range": "\u00b187\u65e5", "start": 58.63}, "vendor": "OpenAI"}, {"events": [{"date": "2025.03.25", "label": "Gemini Pro 2.5 Pro (exp)", "note": "2.5 Pro experimental", "percent": 15.616, "version": "2.5 Pro (exp)"}, {"date": "2025.06.17", "label": "Gemini Pro 2.5 Pro (GA)", "note": "2.5 Pro general availability", "percent": 27.123, "version": "2.5 Pro (GA)"}, {"date": "2025.11.18", "label": "Gemini Pro 3 Pro", "note": "Gemini 3 Pro", "percent": 48.219, "version": "3 Pro"}, {"date": "2026.02.19", "label": "Gemini Pro 3.1 Pro", "major": true, "note": "Gemini 3.1 Pro", "percent": 60.959, "version": "3.1 Pro"}], "name": "Gemini Pro", "prediction": {"date": "2026.05.23", "end": 83.973, "peak": 73.699, "predicted_full": "Gemini Pro 3.2 Pro?", "predicted_version": "3.2 Pro?", "range": "\u00b175\u65e5", "start": 63.425}, "vendor": "Google"}, {"events": [{"date": "2025.04.29", "label": "Qwen 3", "note": "Qwen3 series (including 32B) release", "percent": 20.411, "version": "Qwen3"}, {"date": "2025.09.05", "label": "Qwen 3-Max-Preview", "note": "Qwen3-Max preview", "percent": 38.082, "version": "Qwen3-Max-Preview"}, {"date": "2025.09.11", "label": "Qwen 3-Next", "note": "Qwen3-Next-80B-A3B", "percent": 38.904, "version": "Qwen3-Next"}, {"date": "2025.09.23", "label": "Qwen 3-Max", "note": "Qwen3-Max full release", "percent": 40.548, "version": "Qwen3-Max"}, {"date": "2025.09.23", "label": "Qwen 3-VL (235B)", "note": "Qwen3-VL flagship release", "percent": 40.548, "version": "Qwen3-VL (235B)"}, {"date": "2026.02.16", "label": "Qwen 3.5", "note": "Qwen3.5 and Qwen3.5-Plus release (397B-A17B MoE flagship)", "percent": 60.548, "version": "Qwen3.5"}, {"date": "2026.04.02", "label": "Qwen 3.6-Plus", "major": true, "note": "Qwen3.6-Plus agentic flagship", "percent": 66.712, "version": "Qwen3.6-Plus"}], "name": "Qwen", "prediction": {"date": "2026.04.30", "end": 88.356, "peak": 70.548, "predicted_full": "Qwen 3.7-Plus?", "predicted_version": "Qwen3.7-Plus?", "range": "\u00b1130\u65e5", "start": 52.74}, "vendor": "Alibaba"}, {"category": "IMAGE"}, {"events": [{"date": "2025.08.26", "label": "Nano Banana 2.5 Flash Image (Nano Banana)", "note": "Initial Nano Banana launch", "percent": 36.712, "version": "2.5 Flash Image (Nano Banana)"}, {"date": "2025.11.20", "label": "Nano Banana Pro (3 Pro Image)", "note": "Gemini 3 Pro Image / Nano Banana Pro", "percent": 48.493, "version": "Nano Banana Pro (3 Pro Image)"}, {"date": "2025.11.20", "label": "Nano Banana Pro", "note": "Nano Banana Pro is Google\u0027s new state-of-the-art image generation and editing model", "percent": 48.493, "version": "Pro"}, {"date": "2026.02.26", "label": "Nano Banana 2 (3.1 Flash Image)", "note": "Nano Banana 2 / Gemini 3.1 Flash Image rollout", "percent": 61.918, "version": "Nano Banana 2 (3.1 Flash Image)"}, {"date": "2026.02.26", "label": "Nano Banana 2", "major": true, "note": "Nano Banana 2 is Google\u0027s new state-of-the-art fast image generation and editing model", "percent": 61.918, "version": "2"}], "name": "Nano Banana", "prediction": {"date": "2026.04.10", "end": 82.192, "peak": 67.808, "predicted_full": "Nano Banana 3?", "predicted_version": "3?", "range": "\u00b1105\u65e5", "start": 53.425}, "vendor": "Google"}, {"events": [{"date": "2025.03.25", "label": "GPT-Image 4o image gen", "note": "Native 4o image generation in ChatGPT", "percent": 15.616, "version": "GPT-4o image gen"}, {"date": "2025.04.23", "label": "GPT-Image 1", "note": "API release of gpt-image-1", "percent": 19.589, "version": "gpt-image-1"}, {"date": "2025.12.16", "label": "GPT-Image 1.5", "major": true, "note": "GPT Image 1.5", "percent": 52.055, "version": "gpt-image-1.5"}], "name": "GPT-Image", "prediction": {"date": "2026.04.28", "end": 100.0, "peak": 70.274, "predicted_full": "GPT-Image 1.6?", "predicted_version": "gpt-image-1.6?", "range": "\u00b1288\u65e5", "start": 30.822}, "vendor": "OpenAI"}, {"events": [{"date": "2025.04.15", "label": "Seedream 3.0", "note": "Seedream 3.0", "percent": 18.493, "version": "3.0"}, {"date": "2025.09.09", "label": "Seedream 4.0", "note": "Seedream 4.0", "percent": 38.63, "version": "4.0"}, {"date": "2025.12.15", "label": "Seedream 4.5", "note": "Seedream 4.5", "percent": 51.918, "version": "4.5"}, {"date": "2026.02.13", "label": "Seedream 5.0 Lite", "major": true, "note": "Seedream 5.0 Lite (public release; full Seedream 5.0 not yet released)", "percent": 60.137, "version": "5.0 Lite"}], "name": "Seedream", "prediction": {"date": "2026.05.21", "end": 85.205, "peak": 73.425, "predicted_full": "Seedream 5.1 Lite?", "predicted_version": "5.1 Lite?", "range": "\u00b186\u65e5", "start": 61.644}, "vendor": "ByteDance"}, {"events": [{"date": "2025.08.04", "label": "Qwen-Image", "note": "Qwen-Image initial release", "percent": 33.699, "version": "Qwen-Image"}, {"date": "2025.08.19", "label": "Qwen-Image Edit", "note": "Qwen-Image-Edit", "percent": 35.753, "version": "Qwen-Image-Edit"}, {"date": "2025.09.22", "label": "Qwen-Image Edit-2509", "note": "September 2025 edit update", "percent": 40.411, "version": "Qwen-Image-Edit-2509"}, {"date": "2025.11.25", "label": "Qwen-Image Edit-2511", "note": "Qwen-Image-Edit-2511", "percent": 49.178, "version": "Qwen-Image-Edit-2511"}, {"date": "2026.02.10", "label": "Qwen-Image 2.0", "major": true, "note": "Qwen-Image-2.0 (7B, unified generation + editing, native 2K)", "percent": 59.726, "version": "Qwen-Image-2.0"}], "name": "Qwen-Image", "prediction": {"date": "2026.03.31", "end": 73.973, "peak": 66.438, "predicted_full": "Qwen-Image 2.1?", "predicted_version": "Qwen-Image-2.1?", "range": "\u00b155\u65e5", "start": 58.904}, "vendor": "Alibaba"}, {"category": "VIDEO"}, {"events": [{"date": "2025.06.11", "label": "Seedance 1.0 Pro", "note": "Seedance 1.0 Pro initial", "percent": 26.301, "version": "1.0 Pro"}, {"date": "2025.12.16", "label": "Seedance 1.5 Pro", "note": "Seedance 1.5 Pro", "percent": 52.055, "version": "1.5 Pro"}, {"date": "2025.12.23", "label": "Seedance Pro 1.5", "note": "Generate videos with audio with Seedance 1.5 (supports start \u0026 end frame) ", "percent": 53.014, "version": "Pro 1.5"}, {"date": "2026.02.12", "label": "Seedance 2.0", "major": true, "note": "Seedance 2.0", "percent": 60.0, "version": "2.0"}], "name": "Seedance", "prediction": {"date": "2026.04.04", "end": 92.329, "peak": 66.986, "predicted_full": "Seedance 2.1?", "predicted_version": "2.1?", "range": "\u00b1185\u65e5", "start": 41.644}, "vendor": "ByteDance"}, {"events": [{"date": "2025.01.15", "label": "Vidu 2.0", "note": "Vidu 2.0", "percent": 6.164, "version": "2.0"}, {"date": "2025.04.21", "label": "Vidu Q1", "note": "Vidu Q1 VFX model", "percent": 19.315, "version": "Q1"}, {"date": "2025.10.20", "label": "Vidu Q2", "note": "Vidu Q2", "percent": 44.247, "version": "Q2"}, {"date": "2026.01.20", "label": "Vidu Q3", "major": true, "note": "Vidu Q3", "percent": 56.849, "version": "Q3"}], "name": "Vidu", "prediction": {"date": "2026.04.24", "end": 83.562, "peak": 69.726, "predicted_full": "Vidu Q4?", "predicted_version": "Q4?", "range": "\u00b1101\u65e5", "start": 55.89}, "vendor": "Shengshu"}, {"events": [{"date": "2024.12.19", "label": "Kling 1.6", "note": "Kling 1.6", "percent": 2.466, "version": "1.6"}, {"date": "2025.04.15", "label": "Kling 2.0", "note": "Kling 2.0 launch event", "percent": 18.493, "version": "2.0"}, {"date": "2025.05.29", "label": "Kling 2.1", "note": "Kling 2.1 series", "percent": 24.521, "version": "2.1"}, {"date": "2025.09.22", "label": "Kling Turbo Pro 2.5", "note": "Kling 2.5 Turbo Pro: Top-tier image-to-video generation with unparalleled motion fluidity, cinematic visuals, and exceptional prompt precision.", "percent": 40.411, "version": "Turbo Pro 2.5"}, {"date": "2025.12.02", "label": "Kling Pro 2.6", "note": "Kling 2.6 Pro: Top-tier image-to-video with cinematic visuals, fluid motion, and native audio generation.", "percent": 50.137, "version": "Pro 2.6"}, {"date": "2026.01.31", "label": "Kling 3.0", "major": true, "note": "Kling 3.0 global launch", "percent": 58.356, "version": "3.0"}], "name": "Kling", "prediction": {"date": "2026.04.07", "end": 75.753, "peak": 67.397, "predicted_full": "Kling 3.1?", "predicted_version": "3.1?", "range": "\u00b161\u65e5", "start": 59.041}, "vendor": "Kuaishou"}, {"events": [{"date": "2024.12.20", "label": "LTX Video 0.9.1", "note": "LTX-Video 0.9.1", "percent": 2.603, "version": "0.9.1"}, {"date": "2025.03.06", "label": "LTX Video 0.9.5", "note": "LTX-Video 0.9.5", "percent": 13.014, "version": "0.9.5"}, {"date": "2025.05.06", "label": "LTX Video 13B (0.9.7)", "note": "LTXV 13B launch", "percent": 21.37, "version": "13B (0.9.7)"}, {"date": "2025.07.30", "label": "LTX Video 0.9.8", "note": "LTX-Video 0.9.8 13B distilled", "percent": 33.014, "version": "0.9.8"}, {"date": "2025.10.22", "label": "LTX Video 2", "note": "LTX-2 next generation", "percent": 44.521, "version": "LTX-2"}, {"date": "2026.03.05", "label": "LTX Video 2.3", "major": true, "note": "LTX-Video 2.3 (22B, native 4K, synchronized audio)", "percent": 62.877, "version": "LTX-2.3"}], "name": "LTX Video", "prediction": {"date": "2026.05.28", "end": 82.603, "peak": 74.384, "predicted_full": "LTX Video 2.4?", "predicted_version": "LTX-2.4?", "range": "\u00b160\u65e5", "start": 66.164}, "vendor": "Lightricks"}, {"events": [{"date": "2025.02.25", "label": "WAN 2.1", "note": "Wan 2.1 open-source release", "percent": 11.781, "version": "2.1"}, {"date": "2025.05.14", "label": "WAN 2.1-VACE", "note": "Wan 2.1-VACE editing extension", "percent": 22.466, "version": "2.1-VACE"}, {"date": "2025.07.29", "label": "WAN 2.2", "note": "Wan 2.2", "percent": 32.877, "version": "2.2"}, {"date": "2025.09.23", "label": "WAN 2.5", "note": "Wan 2.5 preview", "percent": 40.548, "version": "2.5"}, {"date": "2026.03.31", "label": "WAN 2.7", "major": true, "note": "Wan 2.7", "percent": 66.438, "version": "2.7"}], "name": "WAN", "prediction": {"date": "2026.06.16", "end": 93.151, "peak": 76.986, "predicted_full": "WAN 2.8?", "predicted_version": "2.8?", "range": "\u00b1118\u65e5", "start": 60.822}, "vendor": "Alibaba"}];
+
+  // ========== タイムライン描画 ==========
+  const rowsEl = document.getElementById('timeline-rows');
+  const tooltipEl = document.getElementById('tooltip');
+
+  function showTooltip(e, data) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    tooltipEl.innerHTML = data.html;
+    tooltipEl.classList.add('show');
+    const tipRect = tooltipEl.getBoundingClientRect();
+    let x = rect.left + rect.width / 2 - tipRect.width / 2;
+    let y = rect.top - tipRect.height - 8;
+    if (y < 8) y = rect.bottom + 8;
+    if (x < 8) x = 8;
+    if (x + tipRect.width > window.innerWidth - 8) x = window.innerWidth - tipRect.width - 8;
+    tooltipEl.style.left = x + 'px';
+    tooltipEl.style.top = y + 'px';
+  }
+  function hideTooltip() {
+    tooltipEl.classList.remove('show');
+  }
+
+  timelineData.forEach(item => {
+    if (item.category) {
+      const row = document.createElement('div');
+      row.className = 'timeline-row category-header';
+      row.innerHTML = `<span class="category-label">${item.category}</span>`;
+      rowsEl.appendChild(row);
+      return;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'timeline-row';
+
+    // ラベル
+    const label = document.createElement('span');
+    label.className = 'model-label';
+    label.innerHTML = `${item.name}<span class="vendor-mark">${item.vendor}</span>`;
+    row.appendChild(label);
+
+    // トラック
+    const track = document.createElement('div');
+    track.className = 'timeline-track';
+
+    // 月グリッド
+    const grid = document.createElement('div');
+    grid.className = 'month-grid';
+    const TOTAL_MONTHS = 24;
+    const NOW_MONTH_INDEX = 16;
+    for (let m = 0; m < TOTAL_MONTHS; m++) {
+      const col = document.createElement('div');
+      col.className = 'col' + (m === NOW_MONTH_INDEX ? ' now' : '');
+      grid.appendChild(col);
+    }
+    track.appendChild(grid);
+
+    // 予測帯（先に描画して下に置く）
+    if (item.prediction) {
+      const band = document.createElement('div');
+      band.className = 'prediction-band';
+      band.style.left = item.prediction.start + '%';
+      band.style.right = (100 - item.prediction.end) + '%';
+      track.appendChild(band);
+
+      const peak = document.createElement('div');
+      peak.className = 'prediction-peak';
+      peak.style.left = item.prediction.peak + '%';
+      peak.addEventListener('mouseenter', e => showTooltip(e, {
+        html: `
+          <div class="tip-header">
+            <span class="tip-type pred">予測</span>
+            <span class="tip-date">${item.prediction.date}</span>
+          </div>
+          <div class="tip-sublabel">次のリリース予測</div>
+          <div class="tip-version">${item.prediction.predicted_full || item.name}</div>
+          <div class="tip-range">${item.prediction.range}（95%区間）</div>
+        `
+      }));
+      peak.addEventListener('mouseleave', hideTooltip);
+      track.appendChild(peak);
+    }
+
+    // 過去のドット
+    item.events.forEach(ev => {
+      const dot = document.createElement('div');
+      dot.className = 'event-dot' + (ev.major ? ' major' : '');
+      dot.style.left = ev.percent + '%';
+      dot.addEventListener('mouseenter', e => showTooltip(e, {
+        html: `
+          <div class="tip-header">
+            <span class="tip-type past">リリース済</span>
+            <span class="tip-date">${ev.date}</span>
+          </div>
+          <div class="tip-version">${ev.label || item.name + ' ' + ev.version}</div>
+          ${ev.note ? `<div class="tip-detail">${ev.note}</div>` : ''}
+        `
+      }));
+      dot.addEventListener('mouseleave', hideTooltip);
+      track.appendChild(dot);
+    });
+
+    row.appendChild(track);
+    rowsEl.appendChild(row);
+  });
+
+  // グローバル現在線（全行を貫通）
+  rowsEl.style.setProperty('--now-pct', NOW_PERCENT / 100);
+  const globalNow = document.createElement('div');
+  globalNow.className = 'global-now-line';
+  rowsEl.appendChild(globalNow);
+
+  // 初期表示では現在位置が中央に来るようスクロール
+  const scrollEl = document.getElementById('timeline-scroll');
+  if (scrollEl) {
+    requestAnimationFrame(() => {
+      const labelCol = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--label-col')) || 140;
+      const trackMinWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--track-min-width')) || 0;
+      const nowAbs = labelCol + 16 + trackMinWidth * (NOW_PERCENT / 100);
+      scrollEl.scrollLeft = Math.max(0, nowAbs - scrollEl.clientWidth / 2);
+    });
+  }
+
+  // ========== カードのタブ切替 ==========
+  const tabsEl = document.getElementById('tabs');
+  const cardsEl = document.getElementById('cards-grid');
+
+  function applyFilter(cat) {
+    cardsEl.querySelectorAll('.card').forEach(c => {
+      c.hidden = c.dataset.cat !== cat;
+    });
+  }
+
+  tabsEl.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.cat);
+    });
+  });
+
+  // 初期表示: LLM
+  applyFilter('llm');
+</script>
+
+</body>
+</html>
