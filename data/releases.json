@@ -71,6 +71,13 @@
       "source": "openai-blog",
       "url": "https://openai.com/index/introducing-gpt-5-4/",
       "note": "GPT-5.4"
+    },
+    {
+      "version": "5.5",
+      "date": "2026-04-23",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/introducing-gpt-5-5/",
+      "note": "GPT-5.5 (\"Spud\"). Rolled out to Plus/Pro/Business/Enterprise in ChatGPT and Codex; API coming soon"
     }
   ],
   "gemini-pro": [
@@ -278,6 +285,13 @@
       "source": "openai-blog",
       "url": "https://techcrunch.com/2025/12/16/openai-continues-on-its-code-red-warpath-with-new-image-generation-model/",
       "note": "GPT Image 1.5"
+    },
+    {
+      "version": "gpt-image-2",
+      "date": "2026-04-21",
+      "source": "openai-blog",
+      "url": "https://openai.com/index/introducing-chatgpt-images-2-0/",
+      "note": "ChatGPT Images 2.0 (gpt-image-2). Rollout to all ChatGPT/Codex users; API GA early May 2026"
     }
   ],
   "seedream": [

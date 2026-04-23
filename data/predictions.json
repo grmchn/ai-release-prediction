@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-23T19:30:25Z",
+  "updated_at": "2026-04-23T22:27:25Z",
   "models": {
     "claude-opus": {
       "last_version": "4.7",
@@ -12,14 +12,14 @@
       "days_until": 67
     },
     "gpt": {
-      "last_version": "5.4",
-      "last_date": "2026-03-05",
-      "predicted_date": "2026-04-30",
-      "predicted_version": "5.5?",
-      "confidence_range_days": 87,
-      "mean_interval_days": 52,
-      "median_interval_days": 56,
-      "days_until": 7
+      "last_version": "5.5",
+      "last_date": "2026-04-23",
+      "predicted_date": "2026-06-01",
+      "predicted_version": "5.6?",
+      "confidence_range_days": 66,
+      "mean_interval_days": 40,
+      "median_interval_days": 39,
+      "days_until": 39
     },
     "gemini-pro": {
       "last_version": "3.1 Pro",
@@ -52,14 +52,14 @@
       "days_until": -13
     },
     "gpt-image": {
-      "last_version": "gpt-image-1.5",
-      "last_date": "2025-12-16",
-      "predicted_date": "2026-04-28",
-      "predicted_version": "gpt-image-1.6?",
-      "confidence_range_days": 288,
-      "mean_interval_days": 133,
-      "median_interval_days": 133,
-      "days_until": 5
+      "last_version": "gpt-image-2",
+      "last_date": "2026-04-21",
+      "predicted_date": "2026-08-25",
+      "predicted_version": "gpt-image-3?",
+      "confidence_range_days": 204,
+      "mean_interval_days": 131,
+      "median_interval_days": 126,
+      "days_until": 124
     },
     "seedream": {
       "last_version": "5.0 Lite",
