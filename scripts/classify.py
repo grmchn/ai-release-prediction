@@ -29,13 +29,17 @@ from scripts import common  # noqa: E402
 
 
 # Larger batches = fewer LLM calls = less RPM pressure on the free tier.
-BATCH_SIZE = 20
+# Cap at 10 so a full-batch JSON response comfortably fits MAX_TOKENS even
+# when every entry extracts a long model_name/version.
+BATCH_SIZE = 10
 # Sleep between batches to stay under Gemini free-tier RPM limits. The free
 # tier historically caps Gemma at a few RPM; 4s pacing keeps us well under.
 BATCH_SLEEP_SEC = 4.0
-# Per-request cap on generation — shorter responses return faster and reduce
-# the chance of getting cut off mid-JSON.
-MAX_TOKENS = 800
+# Per-request cap on generation. Must hold BATCH_SIZE JSON objects with
+# headroom — each object is ~120-160 tokens, so 4000 covers a full batch
+# with a safety margin. (The previous 800 truncated 20-item batches mid-JSON
+# and silently dropped real releases such as GPT-5.5 on 2026-04-23.)
+MAX_TOKENS = 4000
 # Longest summary we feed the LLM per entry. Title carries most of the
 # classification signal; summary is a backup.
 SUMMARY_TRUNCATE = 300
@@ -223,21 +227,75 @@ def classify_entries(
 
         try:
             judgments = classify_batch(batch)
-        except Exception as err:  # noqa: BLE001 — skip the batch, continue pipeline
+        except Exception as err:  # noqa: BLE001 — try split-retry before giving up
             common.log_error(
                 source="classify:batch",
                 err=err,
-                extra={"start": start, "size": len(batch)},
+                extra={"start": start, "size": len(batch), "phase": "initial"},
             )
-            # Emit unclassified entries so downstream merge sees something.
-            for entry in batch:
-                out.append({**entry, "classification": None})
-            continue
+            judgments = _classify_with_split_retry(batch)
 
         for i, entry in enumerate(batch):
             judgment = _find_judgment(judgments, i)
             out.append({**entry, "classification": judgment})
     return out
+
+
+def _classify_with_split_retry(
+    batch: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Retry a failed batch by halving it until each call succeeds.
+
+    When a batch fails (e.g. the LLM truncates the JSON response mid-array),
+    this halves the batch and retries each side. Single entries that still
+    fail after all fallback models receive a null judgment so the downstream
+    merge step skips them cleanly rather than misclassifying them.
+    """
+    if not batch:
+        return []
+    if len(batch) == 1:
+        try:
+            judgments = classify_batch(batch)
+            return [{**judgments[0], "entry_index": 0}]
+        except Exception as err:  # noqa: BLE001 — give up on this single entry
+            common.log_error(
+                source="classify:batch-split-single",
+                err=err,
+                extra={"title": batch[0].get("title", "")[:120]},
+            )
+            return [{"entry_index": 0, **_null_judgment()}]
+
+    mid = len(batch) // 2
+    halves = [(0, batch[:mid]), (mid, batch[mid:])]
+    results: list[dict[str, Any]] = []
+    for offset, half in halves:
+        try:
+            judgments = classify_batch(half)
+        except Exception as err:  # noqa: BLE001 — recurse into smaller chunks
+            common.log_error(
+                source="classify:batch-split",
+                err=err,
+                extra={"half_size": len(half)},
+            )
+            judgments = _classify_with_split_retry(half)
+        for i in range(len(half)):
+            j = _find_judgment(judgments, i) if judgments else None
+            if j is None:
+                j = _null_judgment()
+            results.append({**j, "entry_index": offset + i})
+    return results
+
+
+def _null_judgment() -> dict[str, Any]:
+    """Neutral judgment used when an LLM call for a single entry still fails."""
+    return {
+        "is_release": False,
+        "model_name": None,
+        "version": None,
+        "category": "other",
+        "release_date": None,
+        "confidence": 0.0,
+    }
 
 
 def _find_judgment(judgments: list[dict[str, Any]], idx: int) -> dict[str, Any] | None:
