@@ -38,6 +38,70 @@
   ],
   "gpt": [
     {
+      "version": "774M",
+      "date": "2019-08-20",
+      "url": "https://openai.com/index/gpt-2-6-month-follow-up",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT-2"
+    },
+    {
+      "version": "1.5B",
+      "date": "2019-11-05",
+      "url": "https://openai.com/index/gpt-2-1-5b-release",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT-2"
+    },
+    {
+      "version": "4",
+      "date": "2023-03-14",
+      "url": "https://openai.com/index/gpt-4-research",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT-4"
+    },
+    {
+      "version": "4o",
+      "date": "2024-05-13",
+      "url": "https://openai.com/index/hello-gpt-4o",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT-4o"
+    },
+    {
+      "version": "mini",
+      "date": "2024-07-18",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT-4o mini"
+    },
+    {
+      "version": "4.5",
+      "date": "2025-02-27",
+      "url": "https://openai.com/index/gpt-4-5-system-card",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT-4.5"
+    },
+    {
+      "version": "4.1",
+      "date": "2025-04-14",
+      "url": "https://openai.com/index/gpt-4-1",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT-4.1"
+    },
+    {
+      "version": "120b",
+      "date": "2025-08-05",
+      "url": "https://openai.com/index/introducing-gpt-oss",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "gpt-oss"
+    },
+    {
       "version": "5",
       "date": "2025-08-07",
       "source": "openai-blog",
@@ -73,6 +137,14 @@
       "note": "GPT-5.4"
     },
     {
+      "version": "5.4 mini/nano",
+      "date": "2026-03-17",
+      "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT"
+    },
+    {
       "version": "5.5",
       "date": "2026-04-23",
       "source": "openai-blog",
@@ -89,11 +161,27 @@
       "note": "2.5 Pro experimental"
     },
     {
+      "version": "2.5 Pro",
+      "date": "2025-05-06",
+      "url": "https://deepmind.google/blog/gemini-25-pro-preview-even-better-coding-performance/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "Gemini 2.5 Pro"
+    },
+    {
       "version": "2.5 Pro (GA)",
       "date": "2025-06-17",
       "source": "google-blog",
       "url": "https://blog.google/technology/google-deepmind/google-gemini-updates-io-2025/",
       "note": "2.5 Pro general availability"
+    },
+    {
+      "version": "2.5 Flash-Lite",
+      "date": "2025-10-25",
+      "url": "https://deepmind.google/blog/gemini-25-flash-lite-is-now-ready-for-scaled-production-use/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "Gemini 2.5 Flash-Lite"
     },
     {
       "version": "3 Pro",
@@ -280,6 +368,14 @@
       "note": "API release of gpt-image-1"
     },
     {
+      "version": "1",
+      "date": "2025-04-23",
+      "url": "https://openai.com/index/image-generation-api",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT-Image"
+    },
+    {
       "version": "gpt-image-1.5",
       "date": "2025-12-16",
       "source": "openai-blog",
@@ -287,11 +383,27 @@
       "note": "GPT Image 1.5"
     },
     {
+      "version": "1.5",
+      "date": "2025-12-16",
+      "url": "https://openai.com/index/new-chatgpt-images-is-here",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "ChatGPT Images"
+    },
+    {
       "version": "gpt-image-2",
       "date": "2026-04-21",
       "source": "openai-blog",
       "url": "https://openai.com/index/introducing-chatgpt-images-2-0/",
       "note": "ChatGPT Images 2.0 (gpt-image-2). Rollout to all ChatGPT/Codex users; API GA early May 2026"
+    },
+    {
+      "version": "2.0",
+      "date": "2026-04-21",
+      "url": "https://openai.com/index/introducing-chatgpt-images-2-0",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T08:29:10Z",
+      "note": "ChatGPT Images"
     }
   ],
   "seedream": [
