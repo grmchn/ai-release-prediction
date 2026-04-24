@@ -116,11 +116,27 @@
       "note": "GPT-5.1 Instant/Thinking"
     },
     {
+      "version": "5.1-Codex-Max",
+      "date": "2025-11-19",
+      "url": "https://openai.com/index/gpt-5-1-codex-max",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T14:00:01Z",
+      "note": "GPT-5.1-Codex-Max"
+    },
+    {
       "version": "5.2",
       "date": "2025-12-11",
       "source": "openai-blog",
       "url": "https://openai.com/index/introducing-gpt-5-2/",
       "note": "GPT-5.2"
+    },
+    {
+      "version": "5.2-Codex",
+      "date": "2025-12-18",
+      "url": "https://openai.com/index/introducing-gpt-5-2-codex",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-24T14:00:01Z",
+      "note": "GPT-5.2-Codex"
     },
     {
       "version": "5.3",
@@ -166,6 +182,14 @@
       "url": "https://deepmind.google/blog/gemini-25-pro-preview-even-better-coding-performance/",
       "source": "https://deepmind.google/blog/rss.xml",
       "detected_at": "2026-04-24T08:29:10Z",
+      "note": "Gemini 2.5 Pro"
+    },
+    {
+      "version": "2.5",
+      "date": "2025-05-06",
+      "url": "https://deepmind.google/blog/build-rich-interactive-web-apps-with-an-updated-gemini-25-pro/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-04-24T14:00:01Z",
       "note": "Gemini 2.5 Pro"
     },
     {
