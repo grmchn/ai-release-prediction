@@ -70,6 +70,14 @@
       "note": "GPT-4o"
     },
     {
+      "version": "o",
+      "date": "2024-05-13",
+      "url": "https://openai.com/index/hello-gpt-4o",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-25T19:18:28Z",
+      "note": "GPT-4o"
+    },
+    {
       "version": "mini",
       "date": "2024-07-18",
       "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence",
@@ -383,6 +391,14 @@
       "source": "hf:Qwen/Qwen3.6-35B-A3B",
       "detected_at": "2026-04-17T03:16:00Z",
       "note": "Qwen/Qwen3.6-35B-A3B"
+    },
+    {
+      "version": "3.6-27B",
+      "date": "2026-04-25",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1sv8eua/qwen3627b_at_80_tps_with_218k_context_window_on/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-04-25T19:18:28Z",
+      "note": "Qwen3.6"
     }
   ],
   "nano-banana": [
