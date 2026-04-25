@@ -102,6 +102,14 @@
       "note": "gpt-oss"
     },
     {
+      "version": "120b, 20b",
+      "date": "2025-08-05",
+      "url": "https://openai.com/index/introducing-gpt-oss",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-25T03:03:07Z",
+      "note": "gpt-oss"
+    },
+    {
       "version": "5",
       "date": "2025-08-07",
       "source": "openai-blog",
@@ -139,10 +147,34 @@
       "note": "GPT-5.2-Codex"
     },
     {
+      "version": "5.3-Codex",
+      "date": "2026-02-05",
+      "url": "https://openai.com/index/introducing-gpt-5-3-codex",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-25T03:03:07Z",
+      "note": "GPT-5.3-Codex"
+    },
+    {
+      "version": "5.3-Codex-Spark",
+      "date": "2026-02-12",
+      "url": "https://openai.com/index/introducing-gpt-5-3-codex-spark",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-25T03:03:07Z",
+      "note": "GPT-5.3-Codex-Spark"
+    },
+    {
       "version": "5.3",
       "date": "2026-03-03",
       "source": "openai-blog",
       "url": "https://openai.com/index/gpt-5-3-instant/",
+      "note": "GPT-5.3 Instant"
+    },
+    {
+      "version": "5.3 Instant",
+      "date": "2026-03-03",
+      "url": "https://openai.com/index/gpt-5-3-instant",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-25T03:03:07Z",
       "note": "GPT-5.3 Instant"
     },
     {
