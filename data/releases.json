@@ -78,6 +78,14 @@
       "note": "GPT-4o mini"
     },
     {
+      "version": "4o mini",
+      "date": "2024-07-18",
+      "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-25T07:42:34Z",
+      "note": "GPT-4o mini"
+    },
+    {
       "version": "4.5",
       "date": "2025-02-27",
       "url": "https://openai.com/index/gpt-4-5-system-card",
@@ -245,6 +253,14 @@
       "source": "google-blog",
       "url": "https://blog.google/products-and-platforms/products/gemini/gemini-3/",
       "note": "Gemini 3 Pro"
+    },
+    {
+      "version": "Nano Banana Pro",
+      "date": "2025-11-20",
+      "url": "https://deepmind.google/blog/build-with-nano-banana-pro-our-gemini-3-pro-image-model/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-04-25T07:42:34Z",
+      "note": "Gemini 3 Pro Image"
     },
     {
       "version": "3.1 Pro",
