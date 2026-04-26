@@ -399,6 +399,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-04-25T19:18:28Z",
       "note": "Qwen3.6"
+    },
+    {
+      "version": "3.6",
+      "date": "2026-04-26",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1sw5fb7/qwen36_35b_a3b_heretic_kld_00015_incredible_model/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-04-26T19:20:19Z",
+      "note": "Qwen3.6"
     }
   ],
   "nano-banana": [

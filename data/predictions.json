@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-26T08:05:03Z",
+  "updated_at": "2026-04-26T19:20:19Z",
   "models": {
     "claude-opus": {
       "last_version": "4.7",
@@ -32,14 +32,14 @@
       "days_until": -8
     },
     "qwen-lm": {
-      "last_version": "3.6-27B",
-      "last_date": "2026-04-25",
-      "predicted_date": "2026-05-07",
-      "predicted_version": "3.7-27B?",
-      "confidence_range_days": 27,
+      "last_version": "3.6",
+      "last_date": "2026-04-26",
+      "predicted_date": "2026-05-08",
+      "predicted_version": "3.7?",
+      "confidence_range_days": 26,
       "mean_interval_days": 14,
       "median_interval_days": 12,
-      "days_until": 11
+      "days_until": 12
     },
     "nano-banana": {
       "last_version": "2",
