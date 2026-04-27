@@ -450,11 +450,27 @@
   ],
   "gpt-image": [
     {
+      "version": "3",
+      "date": "2023-10-19",
+      "url": "https://openai.com/index/dall-e-3-is-now-available-in-chatgpt-plus-and-enterprise",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-27T03:46:08Z",
+      "note": "DALL·E 3"
+    },
+    {
       "version": "GPT-4o image gen",
       "date": "2025-03-25",
       "source": "openai-blog",
       "url": "https://openai.com/index/introducing-4o-image-generation/",
       "note": "Native 4o image generation in ChatGPT"
+    },
+    {
+      "version": "4o",
+      "date": "2025-03-25",
+      "url": "https://openai.com/index/introducing-4o-image-generation",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-27T03:46:08Z",
+      "note": "GPT-4o"
     },
     {
       "version": "gpt-image-1",
