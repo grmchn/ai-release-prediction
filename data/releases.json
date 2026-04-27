@@ -133,6 +133,14 @@
       "note": "GPT-5 launch"
     },
     {
+      "version": "5-Codex",
+      "date": "2025-09-15",
+      "url": "https://openai.com/index/gpt-5-system-card-addendum-gpt-5-codex",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-27T08:49:54Z",
+      "note": "GPT-5-Codex"
+    },
+    {
       "version": "5.1",
       "date": "2025-11-12",
       "source": "openai-blog",
