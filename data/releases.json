@@ -419,6 +419,14 @@
   ],
   "nano-banana": [
     {
+      "version": "2.0 Flash",
+      "date": "2025-03-12",
+      "url": "https://deepmind.google/blog/experiment-with-gemini-20-flash-native-image-generation/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-04-27T19:47:11Z",
+      "note": "Gemini 2.0 Flash"
+    },
+    {
       "version": "2.5 Flash Image (Nano Banana)",
       "date": "2025-08-26",
       "source": "google-blog",
