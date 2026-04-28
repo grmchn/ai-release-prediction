@@ -54,6 +54,14 @@
       "note": "GPT-2"
     },
     {
+      "version": "Edit & Insert",
+      "date": "2022-03-15",
+      "url": "https://openai.com/index/gpt-3-edit-insert",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-28T08:49:27Z",
+      "note": "GPT-3"
+    },
+    {
       "version": "4",
       "date": "2023-03-14",
       "url": "https://openai.com/index/gpt-4-research",
@@ -214,6 +222,14 @@
       "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano",
       "source": "https://openai.com/news/rss.xml",
       "detected_at": "2026-04-24T08:29:10Z",
+      "note": "GPT"
+    },
+    {
+      "version": "5.4 mini and nano",
+      "date": "2026-03-17",
+      "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-28T08:49:27Z",
       "note": "GPT"
     },
     {
