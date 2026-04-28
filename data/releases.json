@@ -134,6 +134,14 @@
       "note": "gpt-oss"
     },
     {
+      "version": "120b/20b",
+      "date": "2025-08-05",
+      "url": "https://openai.com/index/introducing-gpt-oss",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-04-28T20:05:20Z",
+      "note": "gpt-oss"
+    },
+    {
       "version": "5",
       "date": "2025-08-07",
       "source": "openai-blog",
