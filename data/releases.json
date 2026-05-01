@@ -447,6 +447,22 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-01T04:01:06Z",
       "note": "Qwen"
+    },
+    {
+      "version": "3.6 27B",
+      "date": "2026-05-01",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1t0epei/qwen_36_27b_vs_gemma_4_31b_making_packman_game/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-01T13:43:46Z",
+      "note": "Qwen 3.6"
+    },
+    {
+      "version": "3.5-35B-A3B",
+      "date": "2026-05-01",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1t0r5nl/got_dflash_speculative_decoding_working_on/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-01T13:43:46Z",
+      "note": "Qwen3.5"
     }
   ],
   "nano-banana": [
