@@ -439,6 +439,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-04-26T19:20:19Z",
       "note": "Qwen3.6"
+    },
+    {
+      "version": "3.5",
+      "date": "2026-04-30",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1szrbub/qwenscope_official_sparse_autoencoders_saes_for/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-01T04:01:06Z",
+      "note": "Qwen"
     }
   ],
   "nano-banana": [
