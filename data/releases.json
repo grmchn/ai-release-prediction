@@ -463,6 +463,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-01T13:43:46Z",
       "note": "Qwen3.5"
+    },
+    {
+      "version": "3.6-27B-NVFP4",
+      "date": "2026-05-02",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1t1a8gf/qwen3627bnvfp4_images/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-02T03:16:12Z",
+      "note": "Qwen3.6"
     }
   ],
   "nano-banana": [
