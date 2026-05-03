@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-02T19:23:14Z",
+  "updated_at": "2026-05-03T03:53:15Z",
   "models": {
     "claude-opus": {
       "last_version": "4.7",
@@ -9,7 +9,7 @@
       "confidence_range_days": 38,
       "mean_interval_days": 82,
       "median_interval_days": 74,
-      "days_until": 58
+      "days_until": 57
     },
     "gpt": {
       "last_version": "5.5",
@@ -19,7 +19,7 @@
       "confidence_range_days": 33,
       "mean_interval_days": 13,
       "median_interval_days": 7,
-      "days_until": -2
+      "days_until": -3
     },
     "gemini-pro": {
       "last_version": "3.1 Pro",
@@ -29,7 +29,7 @@
       "confidence_range_days": 116,
       "mean_interval_days": 62,
       "median_interval_days": 58,
-      "days_until": -14
+      "days_until": -15
     },
     "qwen-lm": {
       "last_version": "3.6-27B-NVFP4",
@@ -39,7 +39,7 @@
       "confidence_range_days": 3,
       "mean_interval_days": 2,
       "median_interval_days": 1,
-      "days_until": 1
+      "days_until": 0
     },
     "nano-banana": {
       "last_version": "2",
@@ -49,7 +49,7 @@
       "confidence_range_days": 105,
       "mean_interval_days": 46,
       "median_interval_days": 43,
-      "days_until": -22
+      "days_until": -23
     },
     "gpt-image": {
       "last_version": "2.0",
@@ -59,7 +59,7 @@
       "confidence_range_days": 224,
       "mean_interval_days": 91,
       "median_interval_days": 63,
-      "days_until": 52
+      "days_until": 51
     },
     "seedream": {
       "last_version": "5.0 Lite",
@@ -69,7 +69,7 @@
       "confidence_range_days": 86,
       "mean_interval_days": 101,
       "median_interval_days": 97,
-      "days_until": 19
+      "days_until": 18
     },
     "qwen-image": {
       "last_version": "Qwen-Image-2.0",
@@ -79,7 +79,7 @@
       "confidence_range_days": 35,
       "mean_interval_days": 19,
       "median_interval_days": 18,
-      "days_until": -63
+      "days_until": -64
     },
     "seedance": {
       "last_version": "2.0",
@@ -89,7 +89,7 @@
       "confidence_range_days": 185,
       "mean_interval_days": 82,
       "median_interval_days": 51,
-      "days_until": -28
+      "days_until": -29
     },
     "vidu": {
       "last_version": "Q3",
@@ -99,7 +99,7 @@
       "confidence_range_days": 101,
       "mean_interval_days": 108,
       "median_interval_days": 94,
-      "days_until": -8
+      "days_until": -9
     },
     "kling": {
       "last_version": "3.0",
@@ -109,7 +109,7 @@
       "confidence_range_days": 61,
       "mean_interval_days": 73,
       "median_interval_days": 66,
-      "days_until": -25
+      "days_until": -26
     },
     "ltx-video": {
       "last_version": "LTX-2.3",
@@ -119,7 +119,7 @@
       "confidence_range_days": 73,
       "mean_interval_days": 54,
       "median_interval_days": 66,
-      "days_until": 8
+      "days_until": 7
     },
     "wan": {
       "last_version": "2.7",
@@ -129,7 +129,7 @@
       "confidence_range_days": 173,
       "mean_interval_days": 62,
       "median_interval_days": 30,
-      "days_until": -2
+      "days_until": -3
     }
   }
 }
