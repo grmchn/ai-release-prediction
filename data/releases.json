@@ -471,6 +471,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-02T03:16:12Z",
       "note": "Qwen3.6"
+    },
+    {
+      "version": "3-30B-A3B",
+      "date": "2026-05-03",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1t2kpzn/paper_on_hummingbird_lowcost_fpgas_for_llm/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-03T19:23:08Z",
+      "note": "Qwen3"
     }
   ],
   "nano-banana": [
