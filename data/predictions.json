@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-04T03:51:00Z",
+  "updated_at": "2026-05-04T08:54:00Z",
   "models": {
     "claude-opus": {
       "last_version": "4.7",
@@ -32,10 +32,10 @@
       "days_until": -16
     },
     "qwen-lm": {
-      "last_version": "3.6-35B-A3B",
+      "last_version": "3.6 35b a3b",
       "last_date": "2026-05-03",
       "predicted_date": "2026-05-03",
-      "predicted_version": "3.7-35B-A3B?",
+      "predicted_version": "3.7 35b a3b?",
       "confidence_range_days": 1,
       "mean_interval_days": 0,
       "median_interval_days": 0,

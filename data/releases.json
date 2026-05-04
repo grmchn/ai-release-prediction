@@ -487,6 +487,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-04T03:51:00Z",
       "note": "Qwen3.6"
+    },
+    {
+      "version": "3.6 35b a3b",
+      "date": "2026-05-03",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1t31eod/how_much_will_it_cost_to_host_something_like/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-04T08:54:00Z",
+      "note": "Qwen3"
     }
   ],
   "nano-banana": [
