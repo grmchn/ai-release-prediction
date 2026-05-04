@@ -479,6 +479,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-03T19:23:08Z",
       "note": "Qwen3"
+    },
+    {
+      "version": "3.6-35B-A3B",
+      "date": "2026-05-03",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1t2zapy/pushing_a_5yearold_6gb_vram_laptop_to_its_limits/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-04T03:51:00Z",
+      "note": "Qwen3.6"
     }
   ],
   "nano-banana": [
