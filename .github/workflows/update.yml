@@ -54,7 +54,7 @@ jobs:
         run: python scripts/fetch_fal.py --out data/raw/fal.json
 
       - name: Classify RSS entries
-        timeout-minutes: 20
+        timeout-minutes: 30
         run: |
           mkdir -p data/classified
           python scripts/classify.py --in data/raw/rss.json --out data/classified/rss.json
