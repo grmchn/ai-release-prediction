@@ -308,10 +308,139 @@ def _find_judgment(judgments: list[dict[str, Any]], idx: int) -> dict[str, Any] 
     return judgments[idx] if idx < len(judgments) else None
 
 
+def _entry_cache_key(entry: dict[str, Any]) -> str | None:
+    """Return a stable identity key for one RSS entry."""
+    link = str(entry.get("link") or "").strip()
+    if link:
+        return f"link::{link}"
+
+    model_id = str(entry.get("model_id") or "").strip()
+    title = str(entry.get("title") or "").strip()
+    published = str(entry.get("published") or "").strip()
+    if model_id and title and published:
+        return f"entry::{model_id}::{title}::{published}"
+    return None
+
+
+def _load_classification_cache(path: str | Path | None) -> dict[str, dict[str, Any]]:
+    """Load previous classified entries keyed by RSS entry identity."""
+    if not path:
+        return {}
+    cached_entries = common.load_json(path, default=[])
+    if not isinstance(cached_entries, list):
+        return {}
+
+    cache: dict[str, dict[str, Any]] = {}
+    for entry in cached_entries:
+        if not isinstance(entry, dict):
+            continue
+        classification = entry.get("classification")
+        if not isinstance(classification, dict):
+            continue
+        key = _entry_cache_key(entry)
+        if key:
+            cache[key] = classification
+    return cache
+
+
+def _load_existing_release_cache(path: str | Path = "data/releases.json") -> dict[str, dict[str, Any]]:
+    """Load existing releases keyed by source URL.
+
+    The cache is deliberately URL-only. Version inference from RSS titles is
+    easy to make too aggressive; URLs already present in releases.json are a
+    safe skip target because merge_releases.py would deduplicate them anyway.
+    """
+    releases = common.load_json(path, default={}) or {}
+    if not isinstance(releases, dict):
+        return {}
+
+    cache: dict[str, dict[str, Any]] = {}
+    for model_id, items in releases.items():
+        if not isinstance(items, list):
+            continue
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            url = str(item.get("url") or "").strip()
+            if not url:
+                continue
+            cache[url] = {
+                "is_release": True,
+                "model_name": item.get("note") or None,
+                "version": item.get("version"),
+                "category": "other",
+                "release_date": item.get("date"),
+                "confidence": 1.0,
+                "cached_from": "releases.json",
+                "cached_model_id": model_id,
+            }
+    return cache
+
+
+def classify_entries_with_cache(
+    entries: list[dict[str, Any]],
+    *,
+    previous_classified_path: str | Path | None = None,
+    releases_path: str | Path = "data/releases.json",
+    batch_size: int = BATCH_SIZE,
+    batch_sleep_sec: float = BATCH_SLEEP_SEC,
+) -> list[dict[str, Any]]:
+    """Classify only entries that are not already known."""
+    classification_cache = _load_classification_cache(previous_classified_path)
+    release_cache = _load_existing_release_cache(releases_path)
+
+    out: list[dict[str, Any] | None] = [None] * len(entries)
+    pending: list[tuple[int, dict[str, Any]]] = []
+    cache_hits = 0
+    release_hits = 0
+
+    for idx, entry in enumerate(entries):
+        key = _entry_cache_key(entry)
+        cached = classification_cache.get(key or "")
+        if cached is not None:
+            out[idx] = {**entry, "classification": cached}
+            cache_hits += 1
+            continue
+
+        link = str(entry.get("link") or "").strip()
+        release_cached = release_cache.get(link)
+        if release_cached is not None:
+            out[idx] = {**entry, "classification": release_cached}
+            release_hits += 1
+            continue
+
+        pending.append((idx, entry))
+
+    total_batches = (len(pending) + batch_size - 1) // batch_size if pending else 0
+    print(
+        "[classify] input="
+        f"{len(entries)} cached={cache_hits} existing_releases={release_hits} "
+        f"llm={len(pending)} batches={total_batches}",
+        file=sys.stderr,
+        flush=True,
+    )
+
+    if pending:
+        classified_pending = classify_entries(
+            [entry for _, entry in pending],
+            batch_size=batch_size,
+            batch_sleep_sec=batch_sleep_sec,
+        )
+        for (original_idx, _), classified in zip(pending, classified_pending, strict=True):
+            out[original_idx] = classified
+
+    return [item if item is not None else {**entries[idx], "classification": None} for idx, item in enumerate(out)]
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Classify fetch_rss output with Gemma 4")
     parser.add_argument("--in", dest="in_path", required=True, help="path to fetch_rss JSON")
     parser.add_argument("--out", default=None, help="write classified JSON here (default: stdout)")
+    parser.add_argument(
+        "--releases",
+        default="data/releases.json",
+        help="path to cumulative releases.json for safe RSS skip checks",
+    )
     args = parser.parse_args(argv)
 
     entries = common.load_json(args.in_path, default=[])
@@ -329,7 +458,11 @@ def main(argv: list[str] | None = None) -> int:
             file=sys.stderr,
         )
 
-    classified = classify_entries(entries)
+    classified = classify_entries_with_cache(
+        entries,
+        previous_classified_path=args.out,
+        releases_path=args.releases,
+    )
     if args.out:
         common.write_json(args.out, classified)
         print(f"wrote {len(classified)} classified entries to {args.out}", file=sys.stderr)
