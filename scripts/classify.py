@@ -11,6 +11,7 @@ import os
 import re
 import sys
 import time
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -43,6 +44,10 @@ MAX_TOKENS = 4000
 # Longest summary we feed the LLM per entry. Title carries most of the
 # classification signal; summary is a backup.
 SUMMARY_TRUNCATE = 300
+# Regular scheduled runs only need recent RSS entries. Full history is already
+# seeded in releases.json, and old feed items make the Actions job scale with
+# provider archive size instead of with actual new information.
+DEFAULT_SINCE_DAYS = 30
 
 # Primary → fallback chain per AGENTS.md §7.
 # litellm model name format: <provider>/<model>. Gemini / Gemma flow through
@@ -53,6 +58,51 @@ LLM_FALLBACKS: list[str] = [
     "gemini/gemma-3-27b-it",
     "groq/llama-3.3-70b-versatile",
 ]
+
+NEGATIVE_TITLE_PATTERNS = [
+    re.compile(pattern, re.IGNORECASE)
+    for pattern in [
+        r"\bsystem card\b",
+        r"\baddendum\b",
+        r"\bbug bounty\b",
+        r"\bcase stud(?:y|ies)\b",
+        r"\bcustomer\b",
+        r"\bpartnership\b",
+        r"\bresearch partnership\b",
+        r"\bpolicy\b",
+        r"\bpricing\b",
+        r"\benterprise\b",
+        r"\beducation\b",
+        r"\bhiring\b",
+        r"\bevent\b",
+        r"\bwebinar\b",
+        r"\bbenchmark report\b",
+        r"\bhow\b.*\buses?\b",
+        r"\binside\b.*\bfor work\b",
+        r"\bpowered by\b",
+        r"\busing\b.*\bto\b",
+        r"\bwith\b.*\bbuilds?\b",
+    ]
+]
+
+POSITIVE_RELEASE_PATTERNS = [
+    re.compile(pattern, re.IGNORECASE)
+    for pattern in [
+        r"\bintroducing\b",
+        r"\breleased?\b",
+        r"\blaunch(?:ed|ing)?\b",
+        r"\bnow available\b",
+        r"\bnew\b.*\bmodel\b",
+        r"\bfirst look\b",
+        r"\b(gpt|claude|gemini|qwen|wan|ltx|kling|vidu|seedream|seedance|nano banana)[-\s]?\d+(?:\.\d+)*\b",
+        r"\bgpt[- ]image[- ]?\d+(?:\.\d+)*\b",
+    ]
+]
+
+MODEL_OR_VERSION_RE = re.compile(
+    r"\b(gpt|claude|gemini|qwen|wan|ltx|kling|vidu|seedream|seedance|nano banana)[-\s]?\d+(?:\.\d+)*\b",
+    re.IGNORECASE,
+)
 
 
 def _active_fallbacks() -> list[str]:
@@ -377,11 +427,72 @@ def _load_existing_release_cache(path: str | Path = "data/releases.json") -> dic
     return cache
 
 
+def _parse_entry_datetime(value: str | None) -> datetime | None:
+    """Parse an RSS timestamp into an aware UTC datetime."""
+    if not value:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    try:
+        if text.endswith("Z"):
+            text = f"{text[:-1]}+00:00"
+        dt = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
+def _is_older_than_since_days(
+    entry: dict[str, Any],
+    *,
+    since_days: int | None,
+    now: datetime | None = None,
+) -> bool:
+    """Return True when an entry is outside the scheduled classification window."""
+    if since_days is None or since_days <= 0:
+        return False
+    published = _parse_entry_datetime(entry.get("published"))
+    if published is None:
+        return False
+    reference = now or datetime.now(timezone.utc)
+    if reference.tzinfo is None:
+        reference = reference.replace(tzinfo=timezone.utc)
+    cutoff = reference.astimezone(timezone.utc) - timedelta(days=since_days)
+    return published < cutoff
+
+
+def _filter_judgment(reason: str) -> dict[str, Any]:
+    """Neutral non-release judgment for entries filtered before LLM calls."""
+    return {
+        **_null_judgment(),
+        "cached_from": reason,
+    }
+
+
+def _prefilter_non_release(entry: dict[str, Any]) -> dict[str, Any] | None:
+    """Return a false judgment for entries that are clearly not model releases."""
+    title = str(entry.get("title") or "")
+    summary = str(entry.get("summary") or "")
+    text = f"{title}\n{summary}"
+
+    if any(pattern.search(text) for pattern in NEGATIVE_TITLE_PATTERNS):
+        return _filter_judgment("prefilter")
+    if any(pattern.search(text) for pattern in POSITIVE_RELEASE_PATTERNS):
+        return None
+    if MODEL_OR_VERSION_RE.search(text):
+        return None
+    return None
+
+
 def classify_entries_with_cache(
     entries: list[dict[str, Any]],
     *,
     previous_classified_path: str | Path | None = None,
     releases_path: str | Path = "data/releases.json",
+    since_days: int | None = DEFAULT_SINCE_DAYS,
     batch_size: int = BATCH_SIZE,
     batch_sleep_sec: float = BATCH_SLEEP_SEC,
 ) -> list[dict[str, Any]]:
@@ -393,6 +504,8 @@ def classify_entries_with_cache(
     pending: list[tuple[int, dict[str, Any]]] = []
     cache_hits = 0
     release_hits = 0
+    old_hits = 0
+    prefilter_hits = 0
 
     for idx, entry in enumerate(entries):
         key = _entry_cache_key(entry)
@@ -409,12 +522,24 @@ def classify_entries_with_cache(
             release_hits += 1
             continue
 
+        if _is_older_than_since_days(entry, since_days=since_days):
+            out[idx] = {**entry, "classification": _filter_judgment("since-days")}
+            old_hits += 1
+            continue
+
+        prefiltered = _prefilter_non_release(entry)
+        if prefiltered is not None:
+            out[idx] = {**entry, "classification": prefiltered}
+            prefilter_hits += 1
+            continue
+
         pending.append((idx, entry))
 
     total_batches = (len(pending) + batch_size - 1) // batch_size if pending else 0
     print(
         "[classify] input="
         f"{len(entries)} cached={cache_hits} existing_releases={release_hits} "
+        f"old={old_hits} prefiltered={prefilter_hits} "
         f"llm={len(pending)} batches={total_batches}",
         file=sys.stderr,
         flush=True,
@@ -441,6 +566,20 @@ def main(argv: list[str] | None = None) -> int:
         default="data/releases.json",
         help="path to cumulative releases.json for safe RSS skip checks",
     )
+    parser.add_argument(
+        "--since-days",
+        type=int,
+        default=DEFAULT_SINCE_DAYS,
+        help=(
+            "only send RSS entries from the last N days to the LLM; "
+            "older uncached entries are marked non-release (0 disables)"
+        ),
+    )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="disable the date window and consider all RSS entries for classification",
+    )
     args = parser.parse_args(argv)
 
     entries = common.load_json(args.in_path, default=[])
@@ -462,6 +601,7 @@ def main(argv: list[str] | None = None) -> int:
         entries,
         previous_classified_path=args.out,
         releases_path=args.releases,
+        since_days=None if args.all else args.since_days,
     )
     if args.out:
         common.write_json(args.out, classified)
