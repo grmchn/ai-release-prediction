@@ -246,6 +246,14 @@
       "source": "openai-blog",
       "url": "https://openai.com/index/introducing-gpt-5-5/",
       "note": "GPT-5.5 (\"Spud\"). Rolled out to Plus/Pro/Business/Enterprise in ChatGPT and Codex; API coming soon"
+    },
+    {
+      "version": "5.5 Instant",
+      "date": "2026-05-05",
+      "url": "https://openai.com/index/gpt-5-5-instant",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-05-10T04:12:12Z",
+      "note": "GPT-5.5 Instant"
     }
   ],
   "gemini-pro": [
@@ -308,6 +316,14 @@
       "source": "google-blog",
       "url": "https://deepmind.google/models/gemini/pro/",
       "note": "Gemini 3.1 Pro"
+    },
+    {
+      "version": "3.1",
+      "date": "2026-02-19",
+      "url": "https://deepmind.google/blog/gemini-3-1-pro-a-smarter-model-for-your-most-complex-tasks/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-05-10T04:12:12Z",
+      "note": "Gemini Pro"
     }
   ],
   "qwen-lm": [
@@ -527,6 +543,14 @@
       "source": "fal:fal-ai/nano-banana-pro",
       "detected_at": "2026-04-17T01:51:09Z",
       "note": "Nano Banana Pro is Google's new state-of-the-art image generation and editing model"
+    },
+    {
+      "version": "Nano Banana Pro",
+      "date": "2025-11-20",
+      "url": "https://deepmind.google/blog/build-with-nano-banana-pro-our-gemini-3-pro-image-model/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-05-10T04:12:12Z",
+      "note": "Gemini 3 Pro Image"
     },
     {
       "version": "Nano Banana 2 (3.1 Flash Image)",
