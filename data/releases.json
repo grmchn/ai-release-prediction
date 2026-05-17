@@ -511,6 +511,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-04T08:54:00Z",
       "note": "Qwen3"
+    },
+    {
+      "version": "1.7",
+      "date": "2026-05-17",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1tfsmov/mirothinker17_an_openweight_deep_research_agent/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-17T19:18:01Z",
+      "note": "MiroThinker"
     }
   ],
   "nano-banana": [
