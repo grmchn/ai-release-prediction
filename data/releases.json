@@ -519,6 +519,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-17T19:18:01Z",
       "note": "MiroThinker"
+    },
+    {
+      "version": "3.7",
+      "date": "2026-05-18",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1tgpabe/qwen_37_droped_on_qwen_chat/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-18T15:42:35Z",
+      "note": "Qwen"
     }
   ],
   "nano-banana": [
