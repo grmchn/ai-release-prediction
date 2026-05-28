@@ -535,6 +535,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-21T15:39:45Z",
       "note": "Qwen"
+    },
+    {
+      "version": "3B",
+      "date": "2026-05-28",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1tpvldv/nvidia_locateanything_fast_and_highquality/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-05-28T10:09:16Z",
+      "note": "LocateAnything"
     }
   ],
   "nano-banana": [
@@ -751,6 +759,14 @@
       "source": "alibaba",
       "url": "https://gigazine.net/gsc_news/en/20260212-qwen-image-2/",
       "note": "Qwen-Image-2.0 (7B, unified generation + editing, native 2K)"
+    },
+    {
+      "version": "Qwen-Image-Bench",
+      "date": "2026-05-21",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-Bench",
+      "source": "hf:Qwen/Qwen-Image-Bench",
+      "detected_at": "2026-05-28T10:09:16Z",
+      "note": "Qwen/Qwen-Image-Bench"
     }
   ],
   "seedance": [
