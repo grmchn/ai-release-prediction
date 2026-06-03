@@ -559,6 +559,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-05-31T04:12:39Z",
       "note": "Qwen"
+    },
+    {
+      "version": "3.1",
+      "date": "2026-06-03",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1tvg5x5/holo31_35b9b4b08b_qwen_35_finetunes/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-06-03T21:22:49Z",
+      "note": "Holo"
     }
   ],
   "nano-banana": [
