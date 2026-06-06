@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T13:51:20Z",
+  "updated_at": "2026-06-06T19:29:01Z",
   "models": {
     "claude-opus": {
       "last_version": "4.8",
@@ -32,14 +32,14 @@
       "days_until": -94
     },
     "qwen-lm": {
-      "last_version": "3.1",
-      "last_date": "2026-06-03",
-      "predicted_date": "2026-06-07",
-      "predicted_version": "3.2?",
+      "last_version": "3.6-35B-A3B-Uncensored-Claude-4.6-Genesis-APEX",
+      "last_date": "2026-06-06",
+      "predicted_date": "2026-06-10",
+      "predicted_version": "3.7-35B-A3B-Uncensored-Claude-4.6-Genesis-APEX?",
       "confidence_range_days": 4,
       "mean_interval_days": 4,
       "median_interval_days": 4,
-      "days_until": 1
+      "days_until": 4
     },
     "nano-banana": {
       "last_version": "2",

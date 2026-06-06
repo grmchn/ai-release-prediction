@@ -567,6 +567,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-06-03T21:22:49Z",
       "note": "Holo"
+    },
+    {
+      "version": "3.6-35B-A3B-Uncensored-Claude-4.6-Genesis-APEX",
+      "date": "2026-06-06",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1tyb6u7/qwen3635ba3buncensoredclaude46genesisapexgguf/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-06-06T19:29:00Z",
+      "note": "Qwen"
     }
   ],
   "nano-banana": [
