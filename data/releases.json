@@ -42,6 +42,14 @@
       "source": "https://www.reddit.com/r/ClaudeAI/.rss",
       "detected_at": "2026-05-28T20:28:47Z",
       "note": "Claude Opus"
+    },
+    {
+      "version": "5",
+      "date": "2026-06-09",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1u1b22l/introducing_claude_fable_5/",
+      "source": "https://www.reddit.com/r/ClaudeAI/.rss",
+      "detected_at": "2026-06-09T20:11:11Z",
+      "note": "Claude Fable"
     }
   ],
   "gpt": [

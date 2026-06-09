@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-06-09T14:59:04Z",
+  "updated_at": "2026-06-09T20:11:12Z",
   "models": {
     "claude-opus": {
-      "last_version": "4.8",
-      "last_date": "2026-05-28",
-      "predicted_date": "2026-08-08",
-      "predicted_version": "4.9?",
+      "last_version": "5",
+      "last_date": "2026-06-09",
+      "predicted_date": "2026-08-04",
+      "predicted_version": "6?",
       "confidence_range_days": 56,
-      "mean_interval_days": 74,
-      "median_interval_days": 72,
-      "days_until": 60
+      "mean_interval_days": 49,
+      "median_interval_days": 56,
+      "days_until": 56
     },
     "gpt": {
       "last_version": "5.5 Instant",
