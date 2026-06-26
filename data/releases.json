@@ -270,6 +270,14 @@
       "source": "https://openai.com/news/rss.xml",
       "detected_at": "2026-05-10T04:12:12Z",
       "note": "GPT-5.5 Instant"
+    },
+    {
+      "version": "5.6 Sol",
+      "date": "2026-06-26",
+      "url": "https://openai.com/index/previewing-gpt-5-6-sol",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-06-26T19:55:11Z",
+      "note": "GPT-5.6 Sol"
     }
   ],
   "gemini-pro": [
