@@ -646,6 +646,14 @@
       "source": "fal:fal-ai/nano-banana-2",
       "detected_at": "2026-04-17T01:51:09Z",
       "note": "Nano Banana 2 is Google's new state-of-the-art fast image generation and editing model"
+    },
+    {
+      "version": "2 Lite",
+      "date": "2026-06-30",
+      "url": "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-07-01T14:47:51Z",
+      "note": "Nano Banana 2 Lite"
     }
   ],
   "gpt-image": [
