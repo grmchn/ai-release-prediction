@@ -654,6 +654,14 @@
       "source": "https://deepmind.google/blog/rss.xml",
       "detected_at": "2026-07-01T14:47:51Z",
       "note": "Nano Banana 2 Lite"
+    },
+    {
+      "version": "Lite",
+      "date": "2026-06-30",
+      "url": "https://fal.ai/models/google/nano-banana-2-lite",
+      "source": "fal:google/nano-banana-2-lite",
+      "detected_at": "2026-07-03T14:14:00Z",
+      "note": "Nano banana lite is the efficiency-focused model in the image generation family. Sub-2 second latency with cost-effective generation and editing, fast multi-turn local edits, and 14 supported aspect ratios."
     }
   ],
   "gpt-image": [

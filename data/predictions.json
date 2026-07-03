@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T09:24:01Z",
+  "updated_at": "2026-07-03T14:14:00Z",
   "models": {
     "claude-opus": {
       "last_version": "5",
@@ -42,10 +42,10 @@
       "days_until": -23
     },
     "nano-banana": {
-      "last_version": "2 Lite",
+      "last_version": "Lite",
       "last_date": "2026-06-30",
       "predicted_date": "2026-08-18",
-      "predicted_version": "3 Lite?",
+      "predicted_version": null,
       "confidence_range_days": 127,
       "mean_interval_days": 56,
       "median_interval_days": 49,
