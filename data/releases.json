@@ -278,6 +278,14 @@
       "source": "https://openai.com/news/rss.xml",
       "detected_at": "2026-06-26T19:55:11Z",
       "note": "GPT-5.6 Sol"
+    },
+    {
+      "version": "5.6",
+      "date": "2026-07-09",
+      "url": "https://openai.com/index/gpt-5-6",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-07-09T19:51:36Z",
+      "note": "GPT"
     }
   ],
   "gemini-pro": [
