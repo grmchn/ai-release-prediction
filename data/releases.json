@@ -770,6 +770,14 @@
       "source": "bytedance",
       "url": "https://seed.bytedance.com/en/blog/deeper-thinking-more-accurate-generation-introducing-seedream-5-0-lite",
       "note": "Seedream 5.0 Lite (public release; full Seedream 5.0 not yet released)"
+    },
+    {
+      "version": "5.0 Pro",
+      "date": "2026-07-08",
+      "url": "https://fal.ai/models/bytedance/seedream/v5/pro/edit",
+      "source": "fal:bytedance/seedream/v5/pro/edit",
+      "detected_at": "2026-07-10T09:43:47Z",
+      "note": "Seedream 5.0 Pro is grounded, region-precise image editing model that changes one element while keeping the rest of the frame intact with layer separation, sketch completion, and up to 10 reference images."
     }
   ],
   "qwen-image": [
