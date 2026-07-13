@@ -1121,6 +1121,14 @@
       "source": "hf",
       "url": "https://huggingface.co/Lightricks/LTX-2.3",
       "note": "LTX-Video 2.3 (22B, native 4K, synchronized audio)"
+    },
+    {
+      "version": "3",
+      "date": "2026-07-07",
+      "url": "https://fal.ai/models/fal-ai/ltx-2.3-quality/extend-video/lora",
+      "source": "fal:fal-ai/ltx-2.3-quality/extend-video/lora",
+      "detected_at": "2026-07-13T14:41:27Z",
+      "note": "Extend high-quality video with audio from input video using LTX-2.3 with Lora"
     }
   ],
   "wan": [
