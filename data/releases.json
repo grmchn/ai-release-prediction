@@ -786,6 +786,14 @@
       "source": "fal:bytedance/seedream/v5/pro/text-to-image",
       "detected_at": "2026-07-10T14:34:51Z",
       "note": "ByteDance's Seedream 5.0 Pro is flagship text-to-image model, with deep-thinking prompt understanding, native text in 14 languages, and precise control over dense layouts and structured designs."
+    },
+    {
+      "version": "5",
+      "date": "2026-07-08",
+      "url": "https://fal.ai/models/bytedance/seedream/v5/pro/text-to-image",
+      "source": "fal:bytedance/seedream/v5/pro/text-to-image",
+      "detected_at": "2026-07-17T08:15:19Z",
+      "note": "ByteDance's Seedream 5.0 Pro is flagship text-to-image model, with deep-thinking prompt understanding, native text in 14 languages, and precise control over dense layouts and structured designs."
     }
   ],
   "qwen-image": [
