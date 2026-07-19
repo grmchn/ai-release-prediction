@@ -599,6 +599,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-06-06T19:29:00Z",
       "note": "Qwen"
+    },
+    {
+      "version": "3.8 Max",
+      "date": "2026-07-19",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1v0mxpd/qwen_38_max_is_now_live_on_app_too_chatqwenai/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-07-19T13:26:48Z",
+      "note": "Qwen 3.8 Max"
     }
   ],
   "nano-banana": [
