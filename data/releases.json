@@ -356,6 +356,14 @@
       "source": "https://deepmind.google/blog/rss.xml",
       "detected_at": "2026-05-10T04:12:12Z",
       "note": "Gemini Pro"
+    },
+    {
+      "version": "2",
+      "date": "2026-07-30",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-robotics-er-2/",
+      "source": "https://blog.google/technology/google-deepmind/rss/",
+      "detected_at": "2026-07-31T19:50:07Z",
+      "note": "Gemini Robotics ER 2"
     }
   ],
   "qwen-lm": [
