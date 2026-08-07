@@ -1246,6 +1246,14 @@
       "source": "alibaba",
       "url": "https://www.financialcontent.com/article/abnewswire-2026-4-6-alibaba-launches-wan-27-breakthrough-ai-image-and-video-generation-model-with-thinking-mode",
       "note": "Wan 2.7"
+    },
+    {
+      "version": "2",
+      "date": "2026-08-07",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1vi1r6t/wananimate2_pushing_the_application_boundaries_of/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-08-07T19:06:39Z",
+      "note": "Wan-Animate-2"
     }
   ]
 }
