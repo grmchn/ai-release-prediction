@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-09T07:01:16Z",
+  "updated_at": "2026-08-09T12:57:26Z",
   "models": {
     "claude-opus": {
       "last_version": "5",
@@ -82,14 +82,14 @@
       "days_until": -52
     },
     "seedance": {
-      "last_version": "2.0",
-      "last_date": "2026-02-12",
-      "predicted_date": "2026-04-04",
-      "predicted_version": "2.1?",
-      "confidence_range_days": 185,
-      "mean_interval_days": 82,
-      "median_interval_days": 51,
-      "days_until": -127
+      "last_version": "2.5",
+      "last_date": "2026-08-07",
+      "predicted_date": "2026-11-29",
+      "predicted_version": "2.6?",
+      "confidence_range_days": 177,
+      "mean_interval_days": 106,
+      "median_interval_days": 114,
+      "days_until": 112
     },
     "vidu": {
       "last_version": "Q3",

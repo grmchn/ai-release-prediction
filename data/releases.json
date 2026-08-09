@@ -910,6 +910,14 @@
       "source": "bytedance",
       "url": "https://en.wikipedia.org/wiki/Seedance_2.0",
       "note": "Seedance 2.0"
+    },
+    {
+      "version": "2.5",
+      "date": "2026-08-07",
+      "url": "https://fal.ai/models/bytedance/seedance-2.5/reference-to-video",
+      "source": "fal:bytedance/seedance-2.5/reference-to-video",
+      "detected_at": "2026-08-09T12:57:26Z",
+      "note": "Dreamina Seedance 2.5 generates video from up to 50 multimodal references images, video, audio, and style inputs, locking a character, set, and palette across a full 30-second take for production-grade consistency."
     }
   ],
   "vidu": [
