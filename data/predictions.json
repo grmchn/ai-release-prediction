@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-11T13:14:31Z",
+  "updated_at": "2026-08-11T19:08:13Z",
   "models": {
     "claude-opus": {
       "last_version": "5",
@@ -112,14 +112,14 @@
       "days_until": -126
     },
     "ltx-video": {
-      "last_version": "3",
-      "last_date": "2026-07-07",
-      "predicted_date": "2026-09-11",
-      "predicted_version": "4?",
-      "confidence_range_days": 99,
-      "mean_interval_days": 64,
-      "median_interval_days": 66,
-      "days_until": 31
+      "last_version": "2.5-Diffusers",
+      "last_date": "2026-07-26",
+      "predicted_date": "2026-08-05",
+      "predicted_version": "2.6-Diffusers?",
+      "confidence_range_days": 116,
+      "mean_interval_days": 36,
+      "median_interval_days": 10,
+      "days_until": -6
     },
     "wan": {
       "last_version": "2",

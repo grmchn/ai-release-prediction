@@ -1161,6 +1161,22 @@
       "source": "fal:fal-ai/ltx-2.3-quality/extend-video/lora",
       "detected_at": "2026-07-13T14:41:27Z",
       "note": "Extend high-quality video with audio from input video using LTX-2.3 with Lora"
+    },
+    {
+      "version": "2.5",
+      "date": "2026-07-23",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5",
+      "source": "hf:Lightricks/LTX-2.5",
+      "detected_at": "2026-08-11T19:08:13Z",
+      "note": "Lightricks/LTX-2.5"
+    },
+    {
+      "version": "2.5-Diffusers",
+      "date": "2026-07-26",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5-Diffusers",
+      "source": "hf:Lightricks/LTX-2.5-Diffusers",
+      "detected_at": "2026-08-11T19:08:13Z",
+      "note": "Lightricks/LTX-2.5-Diffusers"
     }
   ],
   "wan": [
