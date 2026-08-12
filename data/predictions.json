@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-11T19:08:13Z",
+  "updated_at": "2026-08-12T02:12:01Z",
   "models": {
     "claude-opus": {
       "last_version": "5",
@@ -9,7 +9,7 @@
       "confidence_range_days": 56,
       "mean_interval_days": 49,
       "median_interval_days": 56,
-      "days_until": -7
+      "days_until": -8
     },
     "gpt": {
       "last_version": "5.6",
@@ -19,7 +19,7 @@
       "confidence_range_days": 38,
       "mean_interval_days": 28,
       "median_interval_days": 25,
-      "days_until": -8
+      "days_until": -9
     },
     "gemini-pro": {
       "last_version": "2",
@@ -29,17 +29,17 @@
       "confidence_range_days": 152,
       "mean_interval_days": 64,
       "median_interval_days": 46,
-      "days_until": 34
+      "days_until": 33
     },
     "qwen-lm": {
-      "last_version": "3.8 Max",
-      "last_date": "2026-07-19",
-      "predicted_date": "2026-07-23",
-      "predicted_version": "3.9 Max?",
-      "confidence_range_days": 39,
-      "mean_interval_days": 13,
-      "median_interval_days": 4,
-      "days_until": -19
+      "last_version": "3.8-27b",
+      "last_date": "2026-08-11",
+      "predicted_date": "2026-08-25",
+      "predicted_version": "3.9-27b?",
+      "confidence_range_days": 37,
+      "mean_interval_days": 18,
+      "median_interval_days": 14,
+      "days_until": 13
     },
     "nano-banana": {
       "last_version": "Lite",
@@ -49,7 +49,7 @@
       "confidence_range_days": 127,
       "mean_interval_days": 56,
       "median_interval_days": 49,
-      "days_until": 7
+      "days_until": 6
     },
     "gpt-image": {
       "last_version": "2.0",
@@ -59,7 +59,7 @@
       "confidence_range_days": 224,
       "mean_interval_days": 91,
       "median_interval_days": 63,
-      "days_until": -49
+      "days_until": -50
     },
     "seedream": {
       "last_version": "5",
@@ -69,7 +69,7 @@
       "confidence_range_days": 134,
       "mean_interval_days": 51,
       "median_interval_days": 30,
-      "days_until": -4
+      "days_until": -5
     },
     "qwen-image": {
       "last_version": "Qwen-Image-Bench",
@@ -79,7 +79,7 @@
       "confidence_range_days": 87,
       "mean_interval_days": 39,
       "median_interval_days": 28,
-      "days_until": -54
+      "days_until": -55
     },
     "seedance": {
       "last_version": "2.5",
@@ -89,7 +89,7 @@
       "confidence_range_days": 177,
       "mean_interval_days": 106,
       "median_interval_days": 114,
-      "days_until": 110
+      "days_until": 109
     },
     "vidu": {
       "last_version": "Q3",
@@ -99,7 +99,7 @@
       "confidence_range_days": 101,
       "mean_interval_days": 108,
       "median_interval_days": 94,
-      "days_until": -109
+      "days_until": -110
     },
     "kling": {
       "last_version": "3.0",
@@ -109,17 +109,17 @@
       "confidence_range_days": 61,
       "mean_interval_days": 73,
       "median_interval_days": 66,
-      "days_until": -126
+      "days_until": -127
     },
     "ltx-video": {
-      "last_version": "2.5-Diffusers",
-      "last_date": "2026-07-26",
-      "predicted_date": "2026-08-05",
-      "predicted_version": "2.6-Diffusers?",
-      "confidence_range_days": 116,
-      "mean_interval_days": 36,
-      "median_interval_days": 10,
-      "days_until": -6
+      "last_version": "2.5-Pre-Trained",
+      "last_date": "2026-08-10",
+      "predicted_date": "2026-08-26",
+      "predicted_version": "2.6-Pre-Trained?",
+      "confidence_range_days": 111,
+      "mean_interval_days": 40,
+      "median_interval_days": 16,
+      "days_until": 14
     },
     "wan": {
       "last_version": "2",
@@ -129,7 +129,7 @@
       "confidence_range_days": 158,
       "mean_interval_days": 95,
       "median_interval_days": 92,
-      "days_until": 88
+      "days_until": 87
     }
   }
 }

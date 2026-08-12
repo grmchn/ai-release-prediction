@@ -615,6 +615,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-07-19T13:26:48Z",
       "note": "Qwen 3.8 Max"
+    },
+    {
+      "version": "3.8-27b",
+      "date": "2026-08-11",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1vl8bpt/qwen_3827b_coming_this_week/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-08-12T02:12:01Z",
+      "note": "Qwen 3.8-27b"
     }
   ],
   "nano-banana": [
@@ -1177,6 +1185,14 @@
       "source": "hf:Lightricks/LTX-2.5-Diffusers",
       "detected_at": "2026-08-11T19:08:13Z",
       "note": "Lightricks/LTX-2.5-Diffusers"
+    },
+    {
+      "version": "2.5-Pre-Trained",
+      "date": "2026-08-10",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5-Pre-Trained",
+      "source": "hf:Lightricks/LTX-2.5-Pre-Trained",
+      "detected_at": "2026-08-12T02:12:01Z",
+      "note": "Lightricks/LTX-2.5-Pre-Trained"
     }
   ],
   "wan": [
