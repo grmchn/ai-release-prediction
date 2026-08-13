@@ -623,6 +623,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-08-12T02:12:01Z",
       "note": "Qwen 3.8-27b"
+    },
+    {
+      "version": "3.8-2.4T-A95B",
+      "date": "2026-08-12",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1vmgozv/qwen3824ta95b_released/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-08-13T07:40:13Z",
+      "note": "Qwen"
     }
   ],
   "nano-banana": [
