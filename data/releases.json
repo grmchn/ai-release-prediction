@@ -631,6 +631,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-08-13T07:40:13Z",
       "note": "Qwen"
+    },
+    {
+      "version": "3.8",
+      "date": "2026-08-15",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1voojjz/megathread_qwen_38_27b_release_day/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-08-19T12:57:30Z",
+      "note": "Qwen 3.8 27B"
     }
   ],
   "nano-banana": [
