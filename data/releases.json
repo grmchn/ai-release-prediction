@@ -50,6 +50,14 @@
       "source": "https://www.reddit.com/r/ClaudeAI/.rss",
       "detected_at": "2026-06-09T20:11:11Z",
       "note": "Claude Fable"
+    },
+    {
+      "version": "5.1",
+      "date": "2026-09-01",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1w4juuz/introducing_claude_fable_51_and_claude_mythos_51/",
+      "source": "https://www.reddit.com/r/ClaudeAI/.rss",
+      "detected_at": "2026-09-01T20:46:33Z",
+      "note": "Claude Fable"
     }
   ],
   "gpt": [
