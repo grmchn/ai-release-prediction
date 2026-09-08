@@ -796,6 +796,14 @@
       "source": "https://openai.com/news/rss.xml",
       "detected_at": "2026-04-24T08:29:10Z",
       "note": "ChatGPT Images"
+    },
+    {
+      "version": "2.5",
+      "date": "2026-09-08",
+      "url": "https://openai.com/index/introducing-chatgpt-images-2-5",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-09-08T20:58:23Z",
+      "note": "ChatGPT Images"
     }
   ],
   "seedream": [
