@@ -655,6 +655,14 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-08-19T12:57:30Z",
       "note": "Qwen 3.8 27B"
+    },
+    {
+      "version": "3.8 Max (0902)",
+      "date": "2026-09-16",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wi0dme/qwen38_max_0902_scores_45_on_the_artificial/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-09-16T16:42:28Z",
+      "note": "Qwen"
     }
   ],
   "nano-banana": [
