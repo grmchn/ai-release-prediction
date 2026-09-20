@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-20T10:59:59Z",
+  "updated_at": "2026-09-20T15:56:44Z",
   "models": {
     "claude-opus": {
       "last_version": "5.1",
@@ -72,14 +72,14 @@
       "days_until": -44
     },
     "qwen-image": {
-      "last_version": "Qwen-Image-Bench",
-      "last_date": "2026-05-21",
-      "predicted_date": "2026-06-18",
-      "predicted_version": null,
-      "confidence_range_days": 87,
-      "mean_interval_days": 39,
-      "median_interval_days": 28,
-      "days_until": -94
+      "last_version": "2.1-PE-T2I",
+      "last_date": "2026-09-20",
+      "predicted_date": "2026-11-12",
+      "predicted_version": "2.2-PE-T2I?",
+      "confidence_range_days": 120,
+      "mean_interval_days": 56,
+      "median_interval_days": 53,
+      "days_until": 53
     },
     "seedance": {
       "last_version": "2.5",

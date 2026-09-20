@@ -935,6 +935,30 @@
       "source": "hf:Qwen/Qwen-Image-Bench",
       "detected_at": "2026-05-28T10:09:16Z",
       "note": "Qwen/Qwen-Image-Bench"
+    },
+    {
+      "version": "2.1",
+      "date": "2026-09-14",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1",
+      "source": "hf:Qwen/Qwen-Image-2.1",
+      "detected_at": "2026-09-20T15:56:43Z",
+      "note": "Qwen/Qwen-Image-2.1"
+    },
+    {
+      "version": "2.1-PE-I2I",
+      "date": "2026-09-20",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-PE-I2I",
+      "source": "hf:Qwen/Qwen-Image-2.1-PE-I2I",
+      "detected_at": "2026-09-20T15:56:43Z",
+      "note": "Qwen/Qwen-Image-2.1-PE-I2I"
+    },
+    {
+      "version": "2.1-PE-T2I",
+      "date": "2026-09-20",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-PE-T2I",
+      "source": "hf:Qwen/Qwen-Image-2.1-PE-T2I",
+      "detected_at": "2026-09-20T15:56:43Z",
+      "note": "Qwen/Qwen-Image-2.1-PE-T2I"
     }
   ],
   "seedance": [
