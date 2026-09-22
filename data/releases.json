@@ -663,6 +663,22 @@
       "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
       "detected_at": "2026-09-16T16:42:28Z",
       "note": "Qwen"
+    },
+    {
+      "version": "2.6",
+      "date": "2026-09-21",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wmtjqu/mimov26_distilled_themselves_into_qwen_9b/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-09-22T11:34:43Z",
+      "note": "MiMo"
+    },
+    {
+      "version": "4",
+      "date": "2026-09-22",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wmxfjs/qwen_4_announced_at_apsara_conference/",
+      "source": "https://www.reddit.com/r/LocalLLaMA/.rss",
+      "detected_at": "2026-09-22T11:34:43Z",
+      "note": "Qwen"
     }
   ],
   "nano-banana": [
