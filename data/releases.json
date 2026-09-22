@@ -58,6 +58,14 @@
       "source": "https://www.reddit.com/r/ClaudeAI/.rss",
       "detected_at": "2026-09-01T20:46:33Z",
       "note": "Claude Fable"
+    },
+    {
+      "version": "5.5",
+      "date": "2026-09-22",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "source": "https://raw.githubusercontent.com/taobojlen/anthropic-rss-feed/main/anthropic_news_rss.xml",
+      "detected_at": "2026-09-22T21:13:40Z",
+      "note": "Claude Opus"
     }
   ],
   "gpt": [
