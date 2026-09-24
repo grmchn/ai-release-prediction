@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T03:58:34Z",
+  "updated_at": "2026-09-24T11:32:31Z",
   "models": {
     "claude-opus": {
       "last_version": "5.5",
@@ -12,14 +12,14 @@
       "days_until": 30
     },
     "gpt": {
-      "last_version": "6",
-      "last_date": "2026-09-03",
-      "predicted_date": "2026-10-05",
-      "predicted_version": "7?",
-      "confidence_range_days": 47,
-      "mean_interval_days": 33,
+      "last_version": "6 Astra",
+      "last_date": "2026-09-09",
+      "predicted_date": "2026-10-11",
+      "predicted_version": "7 Astra?",
+      "confidence_range_days": 51,
+      "mean_interval_days": 32,
       "median_interval_days": 32,
-      "days_until": 11
+      "days_until": 17
     },
     "gemini-pro": {
       "last_version": "2",

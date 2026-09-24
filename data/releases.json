@@ -310,6 +310,14 @@
       "source": "https://openai.com/news/rss.xml",
       "detected_at": "2026-09-05T03:38:55Z",
       "note": "GPT-6 Astra"
+    },
+    {
+      "version": "6 Astra",
+      "date": "2026-09-09",
+      "url": "https://openai.com/index/gpt-6-astra-next-generation-work",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-09-24T11:32:31Z",
+      "note": "GPT-6 Astra"
     }
   ],
   "gemini-pro": [
