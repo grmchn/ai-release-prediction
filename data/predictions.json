@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-08T05:28:23Z",
+  "updated_at": "2026-10-08T13:17:13Z",
   "models": {
     "claude-opus": {
       "last_version": "5.5",
@@ -42,14 +42,14 @@
       "days_until": -12
     },
     "nano-banana": {
-      "last_version": "Lite",
-      "last_date": "2026-06-30",
-      "predicted_date": "2026-08-18",
-      "predicted_version": null,
+      "last_version": "2.1",
+      "last_date": "2026-10-06",
+      "predicted_date": "2026-11-24",
+      "predicted_version": "2.2?",
       "confidence_range_days": 127,
       "mean_interval_days": 56,
       "median_interval_days": 49,
-      "days_until": -51
+      "days_until": 47
     },
     "gpt-image": {
       "last_version": "2.5",
