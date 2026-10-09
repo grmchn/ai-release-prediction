@@ -1015,6 +1015,14 @@
       "source": "https://www.reddit.com/r/StableDiffusion/.rss",
       "detected_at": "2026-10-01T05:11:40Z",
       "note": "Viggle turbo"
+    },
+    {
+      "version": "2.1-Turbo",
+      "date": "2026-10-09",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo",
+      "source": "hf:Qwen/Qwen-Image-2.1-Turbo",
+      "detected_at": "2026-10-09T22:37:16Z",
+      "note": "Qwen/Qwen-Image-2.1-Turbo"
     }
   ],
   "seedance": [
