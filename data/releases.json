@@ -404,6 +404,14 @@
       "source": "https://blog.google/technology/google-deepmind/rss/",
       "detected_at": "2026-07-31T19:50:07Z",
       "note": "Gemini Robotics ER 2"
+    },
+    {
+      "version": "4",
+      "date": "2026-10-13",
+      "url": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+      "source": "https://deepmind.google/blog/rss.xml",
+      "detected_at": "2026-10-13T22:34:19Z",
+      "note": "Gemini 4 Argon"
     }
   ],
   "qwen-lm": [
