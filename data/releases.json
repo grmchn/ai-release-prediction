@@ -1345,6 +1345,14 @@
       "source": "hf:Lightricks/LTX-2.5-Pre-Trained",
       "detected_at": "2026-08-12T02:12:01Z",
       "note": "Lightricks/LTX-2.5-Pre-Trained"
+    },
+    {
+      "version": "2-Marking",
+      "date": "2026-10-28",
+      "url": "https://huggingface.co/Lightricks/LTX-2-Marking",
+      "source": "hf:Lightricks/LTX-2-Marking",
+      "detected_at": "2026-10-28T22:28:51Z",
+      "note": "Lightricks/LTX-2-Marking"
     }
   ],
   "wan": [
