@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-29T04:57:21Z",
+  "updated_at": "2026-10-29T12:36:19Z",
   "models": {
     "claude-opus": {
       "last_version": "5.5",
@@ -102,14 +102,14 @@
       "days_until": -188
     },
     "kling": {
-      "last_version": "3.0",
-      "last_date": "2026-01-31",
-      "predicted_date": "2026-04-07",
-      "predicted_version": "3.1?",
-      "confidence_range_days": 61,
-      "mean_interval_days": 73,
-      "median_interval_days": 66,
-      "days_until": -205
+      "last_version": "v4",
+      "last_date": "2026-10-21",
+      "predicted_date": "2027-01-23",
+      "predicted_version": "v5?",
+      "confidence_range_days": 183,
+      "mean_interval_days": 128,
+      "median_interval_days": 94,
+      "days_until": 86
     },
     "ltx-video": {
       "last_version": "2-Marking",

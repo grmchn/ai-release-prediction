@@ -1182,6 +1182,14 @@
       "source": "kuaishou",
       "url": "https://ir.kuaishou.com/news-releases/news-release-details/kling-ai-launches-30-model-ushering-era-where-everyone-can-be",
       "note": "Kling 3.0 global launch"
+    },
+    {
+      "version": "v4",
+      "date": "2026-10-21",
+      "url": "https://fal.ai/models/kling/v4/image-to-video",
+      "source": "fal:kling/v4/image-to-video",
+      "detected_at": "2026-10-29T12:36:19Z",
+      "note": "Kling 4.0 animates a starting image into a 3 to 30-second video at 720p or 1080p, with optional ending frames and per-shot prompts.  "
     }
   ],
   "ltx-video": [
