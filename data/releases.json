@@ -334,6 +334,14 @@
       "source": "https://openai.com/news/rss.xml",
       "detected_at": "2026-10-26T22:30:16Z",
       "note": "GPT-6.1 Terra"
+    },
+    {
+      "version": "6.2",
+      "date": "2026-11-17",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+      "source": "https://openai.com/news/rss.xml",
+      "detected_at": "2026-11-18T00:47:05Z",
+      "note": "GPT-6.2 Astra and Sol"
     }
   ],
   "gemini-pro": [
